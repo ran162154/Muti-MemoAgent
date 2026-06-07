@@ -31,7 +31,6 @@ export { isValidEvent, getEventNames } from './events/bus.js';
 export { GitListener } from './events/listeners/git-listener.js';
 
 export { FileListener } from './events/listeners/file-listener.js';
-export type { FileChangeEvent } from './events/listeners/file-listener.js';
 
 export { CronListener } from './events/listeners/cron-listener.js';
 export type { ScheduledJob } from './events/listeners/cron-listener.js';

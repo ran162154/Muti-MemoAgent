@@ -9,7 +9,6 @@ export { isValidEvent, getEventNames } from './bus.js';
 export { GitListener } from './listeners/git-listener.js';
 
 export { FileListener } from './listeners/file-listener.js';
-export type { FileChangeEvent } from './listeners/file-listener.js';
 
 export { CronListener } from './listeners/cron-listener.js';
 export type { ScheduledJob } from './listeners/cron-listener.js';
