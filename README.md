@@ -11,208 +11,176 @@
 
 ## What is it?
 
-Muti-MemoAgent is a multi-agent memory system. It automatically indexes your code, extracts your preferences from conversations, discovers hidden relationships between projects, and self-evolves by splitting, merging and consolidating memories.
+Muti-MemoAgent gives your AI agents a **self-growing memory system**. It watches your code, listens to your conversations, and automatically builds a knowledge graph that gets smarter over time — without you doing anything.
 
-**Think of it as a self-growing brain for your AI agents.**
+**It's like giving your AI a long-term memory that organizes itself.**
 
 ---
 
 ## Why?
 
-| Problem | Solution |
+| Pain Point | How Muti-MemoAgent Solves It |
 |---|---|
-| AI agents re-understand code from scratch every time | Pre-indexed code graph → symbols + call chain + FTS5 |
-| Memories across projects are disconnected | Cross-Agent graph → auto-discover hidden relations |
-| Memories pile up, never cleaned | Forgetting engine → time decay + importance + consolidation |
-| Agent knowledge is siloed | Self-evolution → split / merge / migrate / compete |
-| New team members can't navigate the codebase | Cognitive pipeline → layers + guided tours |
+| 🐌 AI re-explains your code from scratch every session | Auto-indexes code once → symbols, call chains, and search instantly available forever |
+| 🏝️ Knowledge from different projects never connects | Cross-agent graph discovers that "auth in Project A" is the same pattern as "auth in Project B" |
+| 🗑️ Memory piles up endlessly, never cleaned | Forgetting engine auto-cleans stale memories, keeps only what matters |
+| 🧩 Each AI agent works in isolation | Self-evolution network splits, merges, and migrates knowledge between agents |
+| 👶 New team members can't navigate the codebase | Cognitive pipeline generates guided tours — learn the codebase in dependency order |
 
 ---
 
-## Core Features
+## Features
 
-### 🧠 Memory Intelligence
+### 🧠 Auto-Ingest — Zero Effort Memory
 
-| Feature | Description |
-|---|---|
-| **Auto-Ingest** | 5-stage pipeline: filter → dedup → conflict → route → write |
-| **User Profile** | Auto-extract facts, preferences, procedures from conversations |
-| **Code Indexing** | 20+ languages, symbol extraction, call graph, FTS5 search |
-| **Forgetting Engine** | Time-decay + importance scoring + dream consolidation |
-| **Conflict Detection** | "likes TS" vs "dislikes TS" → flagged for resolution |
+**What it does:** Catches everything automatically — git commits, file saves, conversations. Filters noise, removes duplicates, detects conflicts, then routes content to the right memory agent.
 
-### 🤝 Multi-Agent Collaboration
+**Effect:** After `memograph init`, you literally do nothing. Every time you code or talk, relevant knowledge is captured.
 
-| Feature | Description |
-|---|---|
-| **Cross-Agent Graph** | Weighted directed graph connecting all memory agents |
-| **Relation Discovery** | NER + LLM inference + multi-hop reasoning (A→B→C ⇒ A→C) |
-| **Collaborative Search** | One query searches primary + related + profile + MCP registry |
+**Why better:** Unlike manual note-taking, you don't decide what's important — the system does. 5-stage pipeline ensures only meaningful content is stored.
 
-### 🌱 Self-Evolution
+---
 
-| Feature | Description |
-|---|---|
-| **Fitness Evaluation** | 4-dimension: quality + utility + activity + collaboration |
-| **5 Mutation Operations** | Split / Merge / Reorganize / Consolidate / Migrate |
-| **Competition** | Same-domain agents compete → weakest archived |
+### 👤 User Profile — Knows You
 
-### 🧪 Cognitive Analysis
+**What it does:** Extracts your preferences, habits, workflows, and lessons learned from conversations and code patterns. No forms, no manual input.
 
-| Feature | Description |
-|---|---|
-| **7-Agent Pipeline** | Scanner → FileAnalyzer → Architecture → Tour → Reviewer → Domain → Article |
-| **Architecture Layers** | 7 layers: API / Service / Data / UI / Utility / Config / Test |
-| **Guided Tours** | 3 audiences: Junior / PM / Power User |
-| **Domain Modeling** | 14 predefined domains + business flow extraction |
+**Effect:** When you ask "how should I deploy this?", the agent already knows you use Docker + k8s, not Vercel.
+
+**Why better:** Profiles evolve automatically. If you switch from yarn to pnpm, it detects the change — no need to update settings.
+
+---
+
+### 🔍 Code Intelligence — Understands Your Code
+
+**What it does:** Parses 20+ languages into a searchable knowledge graph. Finds functions, classes, call chains, framework routes, and cross-language bridges.
+
+**Effect:** Search "how does payment work?" → returns the exact functions, their callers, their dependencies, and similar implementations in your other projects.
+
+**Why better:** AI agents spend 58% fewer tool calls understanding code. No more reading 50 files to find one handler.
+
+---
+
+### 🤝 Cross-Agent Collaboration — Projects Talk to Each Other
+
+**What it does:** Automatically discovers hidden relationships between different memory agents. If Profile says "prefers pnpm" and Project A uses pnpm, it links them.
+
+**Effect:** Search "authentication module" → sees your implementation in Project A, a similar pattern in Project B, and your Auth0 preference from Profile — all in one result.
+
+**Why better:** Multi-hop reasoning finds chains like A→B→C even when no direct connection exists. Knowledge emerges across silos.
+
+---
+
+### 🌱 Self-Evolution — Gets Smarter Over Time
+
+**What it does:** Evaluates every memory agent's health across 4 dimensions. Automatically splits bloated agents, merges overlapping ones, consolidates short-term into long-term memory.
+
+**Effect:** A project that starts with 1 agent might evolve into 3 specialized agents (API, Database, Frontend) — automatically, based on actual usage patterns.
+
+**Why better:** Competition mechanism: if two agents cover the same domain, they compete on real queries. The winner survives, the loser's knowledge is merged in.
+
+---
+
+### 🧹 Forgetting Engine — Remembers What Matters
+
+**What it does:** Applies time decay, importance scoring, and dream consolidation. Stale, low-importance memories fade. High-value memories get reinforced.
+
+**Effect:** Your memory bank stays lean. After 3 months, only ~20% of original entries remain — the valuable 20%.
+
+**Why better:** Unlike a database that only grows, this mimics human memory. The system runs a nightly "dream" cycle that distills low-score entries into summaries before removing them.
+
+---
+
+### 🧪 Cognitive Pipeline — Makes Code Readable
+
+**What it does:** Runs 7 specialized AI agents that analyze code structure, identify architectural layers, extract business domains, and build guided learning tours.
+
+**Effect:** A new developer runs `memograph analyze` and gets: a layered architecture map, a step-by-step onboarding tour, and a domain model showing how code maps to business processes.
+
+**Why better:** Three audience modes — Junior devs get explanations with code snippets. PMs get high-level domain flows. Senior devs get architectural decision trade-offs.
 
 ---
 
 ## Quick Start
 
+### One-command onboard (recommended)
+
+```bash
+git clone https://github.com/ran162154/Muti-MemoAgent.git
+cd Muti-MemoAgent
+pnpm install
+# → Auto-opens browser to xiami.aiznrc.com/register
+# → Guides you through key setup
+# → Then just run:
+npx memograph init --xiami-key xiami_sk_xxx
+```
+
 ### For AI Agents
 
 ```bash
-# 1. First-time setup (opens browser for registration)
-npx @memograph/cli onboard
+# First time
+memograph onboard
 
-# 2. Initialize a project
+# Initialize a project
 memograph init --xiami-key xiami_sk_xxx
 
-# 3. Index & analyze
+# Index & analyze
 memograph index && memograph analyze
 
-# 4. Search across all memories
-memograph search "authentication flow"
-
-# 5. Write a memory
-memograph memo "user prefers pnpm over npm" --type preference
+# Search anything
+memograph search "payment flow implementation"
 ```
 
 ### For Humans
 
 ```bash
-# Install
-npm install -g @memograph/cli
-
-# Initialize (auto-creates: profile / mcp-registry / project agents)
-memograph init --xiami-key xiami_sk_xxx
-
-# Index code
-memograph index              # Incremental
-memograph index --full       # Full rebuild
-
-# Analyze architecture
-memograph analyze            # Cognitive pipeline
-memograph analyze --domain   # + Domain extraction
-memograph analyze --language zh  # Chinese output
-
-# Search
-memograph search "payment flow"
-memograph search --mode symbol "authenticateUser"
-memograph search --mode impact "src/auth/login.ts"
-
-# Write memory
-memograph memo "Deploy: build → docker → k8s"
-memograph memo --type preference "User prefers tailwind"
-
-# Watch mode (auto-index on save)
-memograph watch
-
-# Evolve & maintain
-memograph evolve             # Auto split/merge/consolidate
-memograph forget             # Clean expired memories
-memograph check              # Check Xiami quota
-
-# Dashboard
-memograph dashboard          # http://localhost:3456
+memograph init --xiami-key xiami_sk_xxx    # One-time setup
+memograph index                              # Index your code
+memograph analyze                            # Understand architecture
+memograph search "authentication"           # Find anything
+memograph memo "deploy: docker → k8s"        # Save a memory
+memograph watch                              # Auto-sync on save
+memograph dashboard                          # Visual graph UI
 ```
 
 ### All Commands
 
 ```
-init          Initialize project & create memory agents
-onboard       First-time setup wizard
-index         Index codebase into memory
-analyze       Run cognitive analysis pipeline
-search        Search across all memory agents
-memo          Manually write a memory entry
-watch         Auto-index on file changes
-evolve        Run evolution cycle
-forget        Run forgetting cycle
-status        Show connection & agent status
-check         Check Xiami quota & balance
-dashboard     Start web dashboard
-trigger       Manually trigger events
+onboard     First-time setup wizard (register → key → configure)
+init        Initialize project & auto-create memory agents
+index       Index codebase into searchable memory
+analyze     Run cognitive analysis pipeline
+search      Search across all memory agents
+memo        Manually save a memory entry
+watch       Auto-index on every file save
+evolve      Trigger self-evolution cycle
+forget      Clean stale memories
+status      Show connection & agent health
+check       Check cloud quota
+dashboard   Open visual knowledge graph
 ```
 
 ---
 
-## Architecture
+## Architecture (simplified)
 
 ```
-Agent Query "payment flow"
-  │
-  ├─ L1: Local SQLite (0.5ms) ─── FTS5 + Vector + Symbol index
-  │   → Current project matches (70% weight)
-  │
-  ├─ L2: Xiami Cloud (200ms) ─── Neo4j Graph + RAG
-  │   → Cross-project similarities (20%)
-  │   → User profile/preferences (10%)
-  │
-  └─ Merged & ranked results
+Every search hits two layers simultaneously:
+
+  L1 — Local SQLite (0.5ms)
+  → Your current project, always available, zero latency
+
+  L2 — Xiami Cloud (200ms)
+  → All your projects, user profile, cross-agent links
+
+  Results merged & ranked by relevance
 ```
-
-```
-┌──────────────┐  ┌──────────────┐  ┌──────────────┐
-│   Indexer    │  │   Ingest     │  │  Cognitive   │
-│  Code→Graph  │  │ Text→Memory  │  │ Code→Insight  │
-├──────────────┤  ├──────────────┤  ├──────────────┤
-│ Tree-sitter  │  │ SignalFilter │  │ 7-Agent Pipe │
-│ 20+ Lang     │  │ Dedup/Route  │  │ Architecture │
-│ FTS5 Search  │  │ 5 Extractors │  │ Guided Tours │
-└──────┬───────┘  └──────┬───────┘  └──────┬───────┘
-       └─────────────────┼─────────────────┘
-                         ▼
-              ┌─────────────────────┐
-              │    Memory Store      │
-              │  L1 Local + L2 Cloud │
-              └──────────┬──────────┘
-                         │
-        ┌────────────────┼────────────────┐
-        ▼                ▼                ▼
-  ┌──────────┐   ┌────────────┐   ┌────────────┐
-  │Evolution │   │Collaboration│   │  Search     │
-  │ Engine   │   │  Network    │   │  Layer      │
-  ├──────────┤   ├────────────┤   ├────────────┤
-  │ Fitness  │   │ Cross-Agent│   │ FTS5+Vector │
-  │ Mutate   │   │ NER+Infer  │   │ +Symbol     │
-  │ Compete  │   │ Multi-Hop  │   │ +Graph      │
-  └──────────┘   └────────────┘   └────────────┘
-```
-
----
-
-## Tech Stack
-
-| Layer | Tech |
-|---|---|
-| Language | TypeScript (monorepo) |
-| Package Manager | pnpm workspace |
-| Code Parsing | Tree-sitter + regex extractors |
-| Local Storage | SQLite + FTS5 + better-sqlite3 |
-| Cloud Storage | Xiami API (Neo4j + Memory + RAG) |
-| CLI | Commander.js |
-| Dashboard | React + Vite |
-| MCP Server | @modelcontextprotocol/sdk |
 
 ---
 
 ## License
 
-Copyright © 2026 Muti-MemoAgent Contributors.
-
-See [LICENSE](./LICENSE) for details.
+Copyright © 2026 Muti-MemoAgent Contributors. See [LICENSE](./LICENSE).
 
 ---
 
