@@ -16,6 +16,8 @@ import {dashboardCommand} from './commands/dashboard.js';
 import {analyzeCommand} from './commands/analyze.js';
 import {watchCommand} from './commands/watch.js';
 import {triggerCommand} from './commands/trigger.js';
+import {onboardCommand} from './commands/onboard.js';
+import {checkCommand} from './commands/check.js';
 
 const program = new Command();
 
@@ -124,13 +126,22 @@ program
   });
 
 program
-  .command('dashboard')
-  .description('Start the memograph dashboard web UI')
-  .option('-p, --port <port>', 'Dashboard port', '4173')
-  .action(async (opts) => {
-    await dashboardCommand(opts);
+  .command('onboard')
+  .description('First-time setup: register Xiami account, get API key, show quick start guide')
+  .action(async () => {
+    await onboardCommand();
   });
 
+program
+  .command('check')
+  .description('Check Xiami quota and balance')
+  .option('-e, --entries <n>', 'Expected entries needed', '5')
+  .option('-a, --agents <n>', 'Expected agents needed', '0')
+  .action(async (opts) => {
+    await checkCommand(opts);
+  });
+
+program
 // ═══════════════════════════════════════════════════════════════
 // Parse
 // ═══════════════════════════════════════════════════════════════

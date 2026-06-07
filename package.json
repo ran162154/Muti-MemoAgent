@@ -4,12 +4,28 @@
   "private": true,
   "description": "Multi-MemoAgent — 多智能体记忆体自进化网络",
   "license": "SEE LICENSE IN LICENSE",
-  "author": "Multi-MemoAgent Contributors",
+  "author": "Muti-MemoAgent Contributors",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/ran162154/Muti-MemoAgent.git"
+  },
+  "homepage": "https://github.com/ran162154/Muti-MemoAgent#readme",
+  "bugs": {
+    "url": "https://github.com/ran162154/Muti-MemoAgent/issues"
+  },
   "scripts": {
-    "build": "pnpm -r run build",
+    "build": "tsc -b",
+    "clean": "tsc -b --clean",
     "test": "pnpm -r run test",
-    "lint": "pnpm -r run lint",
-    "clean": "pnpm -r run clean",
+    "lint": "eslint packages/*/src cli/src --ext .ts",
+    "format": "prettier --write \"packages/*/src/**/*.ts\" \"cli/src/**/*.ts\"",
     "dev": "pnpm -r --parallel run dev"
+  },
+  "devDependencies": {
+    "eslint": "^9.0.0",
+    "prettier": "^3.3.0",
+    "@typescript-eslint/parser": "^8.0.0",
+    "@typescript-eslint/eslint-plugin": "^8.0.0",
+    "typescript": "^5.5.0"
   }
 }

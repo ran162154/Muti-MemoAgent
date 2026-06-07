@@ -33,6 +33,29 @@ export interface XiamiAgentCreateRequest {
   description?: string;
 }
 
+// ── Quota / Balance ────────────────────────────────────
+
+export interface XiamiQuotaInfo {
+  total: number;          // 套餐总记忆条数
+  used: number;           // 已用条数
+  remaining: number;      // 剩余额度
+  tier: string;           // 套餐等级 (free/basic/pro/enterprise)
+  agent_limit: number;    // 最大记忆体数量
+  agents_created: number; // 已创建记忆体数
+}
+
+export class QuotaExceededError extends Error {
+  constructor(
+    public readonly quota: XiamiQuotaInfo,
+    public readonly required: number,
+  ) {
+    super(
+      `Quota exceeded: need ${required} items, only ${quota.remaining} remaining (${quota.tier} tier)`,
+    );
+    this.name = 'QuotaExceededError';
+  }
+}
+
 // ─────────────────────────────────────────────────────────────────
 // Error
 // ─────────────────────────────────────────────────────────────────
@@ -81,7 +104,7 @@ export class XiamiClient {
 
     const headers: Record<string, string> = {
       'Content-Type': 'application/json',
-      'X-Platform-Key': this.platformKey,
+      'Authorization': 'Bearer ' + this.platformKey,
       'User-Agent': '@memograph/persist/0.1.0',
     };
 
@@ -243,5 +266,109 @@ export class XiamiClient {
       '/ai/memory/stats',
       { agent_id: agentId },
     );
+  }
+
+  // ═════════════════════════════════════════════════════════
+  // 🆕 Quota / Balance / Onboarding
+  // ═════════════════════════════════════════════════════════
+
+  /**
+   * Validate the platform key and get account info.
+   */
+  async whoAmI(): Promise<{
+    account_id: string;
+    tier: string;
+    agents: Array<{ id: string; name: string; entry_count: number }>;
+  }> {
+    return this.request('GET', '/auth/whoami');
+  }
+
+  /**
+   * Get account quota — memory limits and agent limits.
+   */
+  async getQuota(): Promise<XiamiQuotaInfo> {
+    try {
+      const manifest = await this.request<any>(
+        'GET',
+        '/third-party/memory/integration-manifest',
+      );
+      // Extract quota info from manifest
+      return {
+        total: manifest?.quota?.memory_limit ?? manifest?.max_memories ?? 100,
+        used: manifest?.quota?.memory_used ?? manifest?.memory_count ?? 0,
+        remaining:
+          (manifest?.quota?.memory_limit ?? 100) -
+          (manifest?.quota?.memory_used ?? 0),
+        tier: manifest?.quota?.tier ?? manifest?.plan ?? 'free',
+        agent_limit: manifest?.quota?.agent_limit ?? 5,
+        agents_created: manifest?.agents?.length ?? 0,
+      };
+    } catch {
+      // Fallback: try agents endpoint
+      try {
+        const agents = await this.listAgents();
+        return {
+          total: 100,
+          used: 0,
+          remaining: 100,
+          tier: 'free',
+          agent_limit: 5,
+          agents_created: agents.length,
+        };
+      } catch {
+        return {
+          total: 0,
+          used: 0,
+          remaining: 0,
+          tier: 'unknown',
+          agent_limit: 0,
+          agents_created: 0,
+        };
+      }
+    }
+  }
+
+  /**
+   * Check if there's enough quota for the requested operation.
+   * Throws QuotaExceededError if insufficient.
+   */
+  async checkQuota(requiredEntries: number, requiredAgents = 0): Promise<void> {
+    const quota = await this.getQuota();
+
+    if (requiredEntries > 0 && quota.remaining < requiredEntries) {
+      throw new QuotaExceededError(quota, requiredEntries);
+    }
+
+    if (requiredAgents > 0) {
+      const remainingAgents = quota.agent_limit - quota.agents_created;
+      if (remainingAgents < requiredAgents) {
+        throw new QuotaExceededError(quota, requiredAgents);
+      }
+    }
+  }
+
+  /**
+   * Get the Xiami recharge/pricing page URL.
+   */
+  getRechargeUrl(): string {
+    // Strip /api/v1 to get the web console base
+    const webBase = this.apiBase.replace(/\/api\/v1$/, '');
+    return `${webBase}/pricing`;
+  }
+
+  /**
+   * Get the Xiami registration page URL.
+   */
+  getRegisterUrl(): string {
+    const webBase = this.apiBase.replace(/\/api\/v1$/, '');
+    return `${webBase}/register`;
+  }
+
+  /**
+   * Get the Xiami API keys management page URL.
+   */
+  getApiKeysUrl(): string {
+    const webBase = this.apiBase.replace(/\/api\/v1$/, '');
+    return `${webBase}/api-keys`;
   }
 }

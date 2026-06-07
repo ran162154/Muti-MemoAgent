@@ -1,0 +1,15 @@
+{
+  "files": [],
+  "references": [
+    { "path": "packages/core" },
+    { "path": "packages/persist" },
+    { "path": "packages/memory" },
+    { "path": "packages/indexer" },
+    { "path": "packages/ingest" },
+    { "path": "packages/collaboration" },
+    { "path": "packages/cognitive" },
+    { "path": "packages/evolution" },
+    { "path": "packages/sdk" },
+    { "path": "cli" }
+  ]
+}

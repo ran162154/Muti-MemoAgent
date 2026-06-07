@@ -1,9 +1,11 @@
 // Muti-MemoAgent 功能测试 — v3 (handles better-sqlite3 missing bindings)
 import { createHash } from 'node:crypto';
 import { mkdirSync, writeFileSync } from 'node:fs';
-import { join } from 'node:path';
+import { fileURLToPath } from 'node:url';
+import { dirname, join } from 'node:path';
 
-const TEST_DIR = join('C:', 'Users', 'Admin', 'github', 'memograph', '.test-workspace');
+const __dirname = dirname(fileURLToPath(import.meta.url));
+const TEST_DIR = join(__dirname, '.test-workspace');
 const PASS = '✅', FAIL = '❌', WARN = '⚠️';
 let passed = 0, failed = 0, warned = 0;
 

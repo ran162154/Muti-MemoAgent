@@ -93,7 +93,7 @@ export function getDefaultConfig(): MemographConfig {
   return {
     xiami: {
       platform_key: '',
-      api_base: 'https://xiami-api.example.com',
+      api_base: 'https://xiami.aiznrc.com',
       agents: {},
     },
     local: {

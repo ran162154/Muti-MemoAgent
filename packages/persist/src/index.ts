@@ -2,8 +2,8 @@
 // @memograph/persist — Public API
 // ─────────────────────────────────────────────────────────────────
 
-export { XiamiClient, XiamiApiError } from './xiami-client.js';
-export type { XiamiClientConfig, XiamiWriteResponse, XiamiBatchWriteResponse } from './xiami-client.js';
+export { XiamiClient, XiamiApiError, QuotaExceededError } from './xiami-client.js';
+export type { XiamiClientConfig, XiamiWriteResponse, XiamiBatchWriteResponse, XiamiQuotaInfo } from './xiami-client.js';
 
 export { LocalDB } from './local-db.js';
 

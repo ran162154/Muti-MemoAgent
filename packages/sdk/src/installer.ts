@@ -14,7 +14,7 @@ import {IngestPipeline} from '@memograph/ingest';
 import * as fs from 'node:fs';
 import * as path from 'node:path';
 import * as os from 'node:os';
-import {execSync} from 'node:child_process';
+import {execSync, exec} from 'node:child_process';
 
 import {
   loadConfig,
@@ -98,7 +98,7 @@ export class MemographSDK {
       this.config.xiami.platform_key = xiamiKey;
       if (!this.config.xiami.api_base) {
         this.config.xiami.api_base = process.env.XIAMI_API_BASE ||
-          'https://xiami-api.example.com';
+          'https://xiami.aiznrc.com';
       }
 
       // 尝试连接 Xiami
@@ -431,5 +431,142 @@ export class MemographSDK {
       // ignore
     }
     return size;
+  }
+
+  // ═════════════════════════════════════════════════════════
+  // 🆕 新用户引导 Onboarding
+  // ═════════════════════════════════════════════════════════
+
+  async onboard(): Promise<void> {
+    console.log('\n==================================================');
+    console.log('  🧠  Welcome to Muti-MemoAgent!');
+    console.log('  多智能体记忆体自进化网络');
+    console.log('==================================================\n');
+
+    const hasKey = this.config.xiami.platform_key?.startsWith('xiami_sk_');
+
+    if (!hasKey) {
+      console.log('[Step 1] Register on Xiami platform\n');
+      console.log('  Muti-MemoAgent stores memories on Xiami cloud.');
+      console.log('  A free account is required.\n');
+
+      const xiamiBase = this.config.xiami.api_base || 'https://xiami.aiznrc.com';
+      const webBase = xiamiBase.replace(/\/api\/v1\/?$/, '');
+      const registerUrl = `${webBase}/register`;
+      const apiKeysUrl = `${webBase}/api-keys`;
+
+      console.log('  → Opening registration page...');
+      console.log(`    ${registerUrl}\n`);
+      this.openBrowser(registerUrl);
+
+      console.log('  After registering:');
+      console.log('  1. Complete signup on the website');
+      console.log('  2. Go to API Keys to create a platform key\n');
+
+      console.log('  → Opening API Keys page...');
+      console.log(`    ${apiKeysUrl}\n`);
+      this.openBrowser(apiKeysUrl);
+
+      console.log('  3. Copy your key (starts with xiami_sk_)');
+      console.log('  4. Run: memograph init --xiami-key YOUR_KEY\n');
+      return;
+    }
+
+    console.log('[Step 2] Verifying Xiami connection...\n');
+    const client = new XiamiClientImpl({
+      api_base: this.config.xiami.api_base,
+      platform_key: this.config.xiami.platform_key,
+    });
+
+    try {
+      const whoami = await client.whoAmI();
+      console.log(`  ✅ Connected! Tier: ${whoami.tier || 'free'}`);
+      console.log(`  Agents: ${whoami.agents?.length || 0}\n`);
+    } catch { console.log('  ⚠️  Could not verify. Continuing...\n'); }
+
+    console.log('[Step 3] Checking quota...\n');
+    try {
+      const quota = await client.getQuota();
+      console.log(`  Tier: ${quota.tier} | Memory: ${quota.used}/${quota.total}`);
+      console.log(`  Agents: ${quota.agents_created}/${quota.agent_limit}\n`);
+      if (quota.remaining < 10) console.log('  ⚠️  Low quota! Consider upgrading.\n');
+    } catch { console.log('  ⚠️  Could not check quota.\n'); }
+
+    this.showQuickStart();
+  }
+
+  async checkBalance(requiredEntries: number, requiredAgents = 0): Promise<{ sufficient: boolean; action: string; message: string }> {
+    if (!this.config.xiami.platform_key) {
+      return { sufficient: false, action: 'register', message: 'No Xiami key. Run: memograph onboard' };
+    }
+
+    const client = new XiamiClientImpl({
+      api_base: this.config.xiami.api_base,
+      platform_key: this.config.xiami.platform_key,
+    });
+
+    let quota;
+    try { quota = await client.getQuota(); } catch {
+      return { sufficient: true, action: 'offline', message: 'Cannot reach Xiami. Offline mode.' };
+    }
+
+    if (quota.remaining < requiredEntries) {
+      console.log('\n==================================================');
+      console.log('  ⚠️  INSUFFICIENT QUOTA');
+      console.log('==================================================\n');
+      console.log(`  Plan: ${quota.tier}`);
+      console.log(`  Used: ${quota.used}/${quota.total}`);
+      console.log(`  Need: ${requiredEntries} | Have: ${quota.remaining}\n`);
+
+      const rechargeUrl = client.getRechargeUrl();
+      console.log(`  → Opening upgrade page: ${rechargeUrl}\n`);
+      this.openBrowser(rechargeUrl);
+
+      console.log('  Options:');
+      console.log('  1. Upgrade plan on the website');
+      console.log('  2. Continue offline (local only)');
+      console.log('  3. Free up space: memograph forget\n');
+
+      return { sufficient: false, action: 'recharge', message: `Quota exceeded. Upgrade: ${rechargeUrl}` };
+    }
+
+    if (requiredAgents > 0 && (quota.agent_limit - quota.agents_created) < requiredAgents) {
+      console.log('\n  ⚠️  AGENT LIMIT REACHED');
+      console.log(`  ${quota.agents_created}/${quota.agent_limit} agents used\n`);
+      this.openBrowser(client.getRechargeUrl());
+      return { sufficient: false, action: 'recharge', message: 'Agent limit reached.' };
+    }
+
+    return { sufficient: true, action: 'proceed', message: `OK: ${quota.remaining} entries available` };
+  }
+
+  private showQuickStart(): void {
+    console.log('==================================================');
+    console.log('  📖 Quick Start');
+    console.log('==================================================\n');
+    console.log('  memograph init                   Initialize project');
+    console.log('  memograph index                  Index codebase');
+    console.log('  memograph analyze                Analyze architecture');
+    console.log('  memograph search "query"         Search memories');
+    console.log('  memograph memo "content"         Write memory');
+    console.log('  memograph watch                  Auto-sync on changes');
+    console.log('  memograph evolve                 Run evolution cycle');
+    console.log('  memograph forget                 Clean expired memories');
+    console.log('  memograph dashboard              Open dashboard');
+    console.log('  memograph onboard                First-time setup\n');
+    console.log('  --- Xiami ---');
+    console.log('  Console: https://xiami.aiznrc.com');
+    console.log('  API:     https://xiami.aiznrc.com/api-guide\n');
+  }
+
+  private openBrowser(url: string): void {
+    try {
+      const p = process.platform;
+      if (p === 'win32') exec(`start "" "${url}"`);
+      else if (p === 'darwin') exec(`open "${url}"`);
+      else exec(`xdg-open "${url}"`);
+    } catch {
+      console.log(`  Please open: ${url}`);
+    }
   }
 }
