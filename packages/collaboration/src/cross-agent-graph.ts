@@ -1,10 +1,10 @@
 // ────────────────────────────────────────────────────────────────
-// @memograph/collaboration — Cross-Agent Graph
+// @mutimemoagent/collaboration — Cross-Agent Graph
 // In-memory graph for cross-agent relations with BFS traversal,
 // shortest-path, community detection, and serialization.
 // ────────────────────────────────────────────────────────────────
 
-import type { CrossAgentRelation } from '@memograph/core';
+import type { CrossAgentRelation } from '@mutimemoagent/core';
 
 /**
  * In-memory directed weighted graph for cross-agent relations.

@@ -7,7 +7,7 @@ import {
   PipelineOrchestrator,
   isValidEvent,
   getEventNames,
-} from '@memograph/sdk';
+} from '@mutimemoagent/sdk';
 import chalk from 'chalk';
 
 export interface TriggerOptionsCLI {

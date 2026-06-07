@@ -1,9 +1,9 @@
 // ────────────────────────────────────────────────────────────────
-// @memograph/collaboration — Named Entity Recognizer
+// @mutimemoagent/collaboration — Named Entity Recognizer
 // Regex + keyword-based entity extraction for agent memory content.
 // ────────────────────────────────────────────────────────────────
 
-import type { Entity } from '@memograph/core';
+import type { Entity } from '@mutimemoagent/core';
 
 // ── Keyword Dictionaries ────────────────────────────────────
 

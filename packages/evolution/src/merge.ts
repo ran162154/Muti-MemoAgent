@@ -1,8 +1,8 @@
 // ─────────────────────────────────────────────────────────────────
-// @memograph/evolution — 知识合并器
+// @mutimemoagent/evolution — 知识合并器
 // ─────────────────────────────────────────────────────────────────
 
-import type { MemoryEntry } from '@memograph/core';
+import type { MemoryEntry } from '@mutimemoagent/core';
 
 // ═══════════════════════════════════════════════════════════════
 // KnowledgeMerger

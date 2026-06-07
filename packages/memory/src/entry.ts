@@ -1,5 +1,5 @@
 // ─────────────────────────────────────────────────────────────────
-// @memograph/memory — MemoryEntry 工厂函数
+// @mutimemoagent/memory — MemoryEntry 工厂函数
 // ─────────────────────────────────────────────────────────────────
 
 import type {
@@ -7,8 +7,8 @@ import type {
   MemoryType,
   LifecycleStage,
   ChangeRecord,
-} from '@memograph/core';
-import { checksum, generateId, now } from '@memograph/core';
+} from '@mutimemoagent/core';
+import { checksum, generateId, now } from '@mutimemoagent/core';
 import { ImportanceScorer } from './importance.js';
 
 // ═══════════════════════════════════════════════════════════════

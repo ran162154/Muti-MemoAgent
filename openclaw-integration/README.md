@@ -57,7 +57,7 @@ If you prefer to set up manually:
        memograph:
          command: npx
          args:
-           - "@memograph/mcp-server"
+           - "@mutimemoagent/mcp-server"
    ```
 
 2. **Serve the dashboard**:
@@ -65,7 +65,7 @@ If you prefer to set up manually:
    ```bash
    npx serve dashboard/dist
    # or
-   cd path/to/memograph && npx pnpm --filter @memograph/dashboard dev
+   cd path/to/memograph && npx pnpm --filter @mutimemoagent/dashboard dev
    ```
 
 3. **Run the dashboard server** (provides API for agent data):
@@ -76,13 +76,13 @@ If you prefer to set up manually:
 
 ## Components
 
-- **MCP Server** (`@memograph/mcp-server`): stdio-based MCP server exposing memory_search, memory_write, symbol_search, impact_analysis, cross_agent_search, and evolution_report tools
+- **MCP Server** (`@mutimemoagent/mcp-server`): stdio-based MCP server exposing memory_search, memory_write, symbol_search, impact_analysis, cross_agent_search, and evolution_report tools
 - **Dashboard**: React-based web UI at `http://localhost:5173` (dev) or served from `dashboard/dist/`
-- **CLI** (`@memograph/cli`): general-purpose CLI for managing memories
+- **CLI** (`@mutimemoagent/cli`): general-purpose CLI for managing memories
 - **Hooks**: OpenClaw lifecycle hooks for auto-memory management
 
 ## Troubleshooting
 
-- **`npx @memograph/cli init` fails**: Ensure Node.js 18+ is installed and available in PATH
+- **`npx @mutimemoagent/cli init` fails**: Ensure Node.js 18+ is installed and available in PATH
 - **Hooks not running**: Check that files are in `~/.openclaw/workspace/hooks/` and have execute permissions
 - **Dashboard not connecting**: Make sure the API server (`server.ts`) is running on port 3456

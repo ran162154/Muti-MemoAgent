@@ -18,7 +18,7 @@ export function generateHookScript(event: string): string {
 
   return `#!/bin/sh
 # Memograph ${event} hook — auto-index memory on git operations
-# Installed by @memograph/sdk
+# Installed by @mutimemoagent/sdk
 
 MEMOGRAPH_BIN="$(command -v memograph 2>/dev/null)"
 if [ -z "$MEMOGRAPH_BIN" ]; then

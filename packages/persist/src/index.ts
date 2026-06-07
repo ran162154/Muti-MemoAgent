@@ -1,5 +1,5 @@
 // ─────────────────────────────────────────────────────────────────
-// @memograph/persist — Public API
+// @mutimemoagent/persist — Public API
 // ─────────────────────────────────────────────────────────────────
 
 export { XiamiClient, XiamiApiError, QuotaExceededError } from './xiami-client.js';

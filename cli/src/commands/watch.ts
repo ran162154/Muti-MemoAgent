@@ -6,8 +6,8 @@ import {
   EventBus,
   FileListener,
   PipelineOrchestrator,
-} from '@memograph/sdk';
-import {loadConfig, getCacheDir} from '@memograph/sdk';
+} from '@mutimemoagent/sdk';
+import {loadConfig, getCacheDir} from '@mutimemoagent/sdk';
 import * as path from 'node:path';
 import * as fs from 'node:fs';
 import chalk from 'chalk';

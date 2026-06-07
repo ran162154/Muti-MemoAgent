@@ -1,9 +1,9 @@
 // ─────────────────────────────────────────────────────────────────
-// @memograph/memory — RecallEngine 自适应召回引擎
+// @mutimemoagent/memory — RecallEngine 自适应召回引擎
 // ─────────────────────────────────────────────────────────────────
 
-import type { MemoryEntry, SearchResult, SearchQuery, CollaborativeResult } from '@memograph/core';
-import { cosineSimilarity, extractSymbolPattern } from '@memograph/core';
+import type { MemoryEntry, SearchResult, SearchQuery, CollaborativeResult } from '@mutimemoagent/core';
+import { cosineSimilarity, extractSymbolPattern } from '@mutimemoagent/core';
 import type { XiamiClient, LocalDB } from './store.js';
 
 // ═══════════════════════════════════════════════════════════════
@@ -241,7 +241,7 @@ export class RecallEngine {
     return Math.min(score, 1.0);
   }
 
-  // ── 简易哈希嵌入（与 @memograph/core HashEmbedder 一致） ──
+  // ── 简易哈希嵌入（与 @mutimemoagent/core HashEmbedder 一致） ──
   private hashEmbed(text: string, dims = 256): number[] {
     const vec = new Array(dims).fill(0);
     for (let i = 0; i < text.length; i++) {

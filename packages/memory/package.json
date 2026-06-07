@@ -1,5 +1,5 @@
 ﻿{
-    "name":  "@memograph/memory",
+    "name":  "@mutimemoagent/memory",
     "version":  "0.1.0",
     "private":  true,
     "description":  "Memory storage, recall, lifecycle, and forgetting for Multi-MemoAgent",
@@ -18,8 +18,8 @@
                     "test":  "vitest run"
                 },
     "dependencies":  {
-                         "@memograph/core":  "workspace:*",
-                         "@memograph/persist":  "workspace:*"
+                         "@mutimemoagent/core":  "workspace:*",
+                         "@mutimemoagent/persist":  "workspace:*"
                      },
     "devDependencies":  {
                             "@types/node":  "^20.0.0",

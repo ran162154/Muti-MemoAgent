@@ -1,12 +1,12 @@
 // ────────────────────────────────────────────────────────────────
-// @memograph/collaboration — Collaborative Search
+// @mutimemoagent/collaboration — Collaborative Search
 // Cross-agent search that queries the primary agent, related agents,
 // profile agent, and MCP registry in parallel, then merges results.
 // ────────────────────────────────────────────────────────────────
 
-import type { SearchResult, CrossAgentRelation, MemoryEntry } from '@memograph/core';
-import { cosineSimilarity } from '@memograph/core';
-import { XiamiClient } from '@memograph/persist';
+import type { SearchResult, CrossAgentRelation, MemoryEntry } from '@mutimemoagent/core';
+import { cosineSimilarity } from '@mutimemoagent/core';
+import { XiamiClient } from '@mutimemoagent/persist';
 import { CrossAgentGraph } from './cross-agent-graph.js';
 
 // Weight constants for result sources
@@ -74,7 +74,7 @@ export class CollaborativeSearch {
         })
         .then(
           (results) => ({ agentId, results }),
-          () => ({ agentId, results: [] as import('@memograph/core').MemoryEntry[] }),
+          () => ({ agentId, results: [] as import('@mutimemoagent/core').MemoryEntry[] }),
         ),
     );
 
@@ -85,21 +85,21 @@ export class CollaborativeSearch {
       query,
       agent_id: 'profile',
       limit: 10,
-    }).catch(() => [] as import('@memograph/core').MemoryEntry[]);
+    }).catch(() => [] as import('@mutimemoagent/core').MemoryEntry[]);
 
     // ── Step 5: Search MCP registry for relevant tools ────
     const toolResults = await xiamiClient.search({
       query,
       memory_type: 'mcp_registry',
       limit: 10,
-    }).catch(() => [] as import('@memograph/core').MemoryEntry[]);
+    }).catch(() => [] as import('@mutimemoagent/core').MemoryEntry[]);
 
     // ── Step 6: Merge and rank ────────────────────────────
     const resultSets: WeightedResultSet[] = [];
 
     // Primary
     resultSets.push({
-      results: primaryResults.map((entry: import('@memograph/core').MemoryEntry) => ({
+      results: primaryResults.map((entry: import('@mutimemoagent/core').MemoryEntry) => ({
         entry,
         score: 0.9,
         match_type: 'fts5' as const,
@@ -110,7 +110,7 @@ export class CollaborativeSearch {
     // Secondary (related agents)
     for (const { results } of secondaryResults) {
       resultSets.push({
-        results: results.map((entry: import('@memograph/core').MemoryEntry) => ({
+        results: results.map((entry: import('@mutimemoagent/core').MemoryEntry) => ({
           entry,
           score: 0.7,
           match_type: 'fts5' as const,
@@ -122,7 +122,7 @@ export class CollaborativeSearch {
     // Profile
     if (profileResults.length > 0) {
       resultSets.push({
-        results: profileResults.map((entry: import('@memograph/core').MemoryEntry) => ({
+        results: profileResults.map((entry: import('@mutimemoagent/core').MemoryEntry) => ({
           entry,
           score: 0.5,
           match_type: 'fts5' as const,
@@ -134,7 +134,7 @@ export class CollaborativeSearch {
     // Tools
     if (toolResults.length > 0) {
       resultSets.push({
-        results: toolResults.map((entry: import('@memograph/core').MemoryEntry) => ({
+        results: toolResults.map((entry: import('@mutimemoagent/core').MemoryEntry) => ({
           entry,
           score: 0.5,
           match_type: 'fts5' as const,

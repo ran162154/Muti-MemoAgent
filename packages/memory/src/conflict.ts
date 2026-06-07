@@ -1,9 +1,9 @@
 // ─────────────────────────────────────────────────────────────────
-// @memograph/memory — ConflictDetector 冲突检测器
+// @mutimemoagent/memory — ConflictDetector 冲突检测器
 // ─────────────────────────────────────────────────────────────────
 
-import type { MemoryEntry } from '@memograph/core';
-import { generateId, now } from '@memograph/core';
+import type { MemoryEntry } from '@mutimemoagent/core';
+import { generateId, now } from '@mutimemoagent/core';
 import type { LocalDB } from './store.js';
 
 // ═══════════════════════════════════════════════════════════════

@@ -1,8 +1,8 @@
 // ─────────────────────────────────────────────────────────────────
-// @memograph/evolution — 架构健康度评估
+// @mutimemoagent/evolution — 架构健康度评估
 // ─────────────────────────────────────────────────────────────────
 
-import type { GraphDiff } from '@memograph/core';
+import type { GraphDiff } from '@mutimemoagent/core';
 import type { CodeGraph, CodeGraphNode, CodeGraphEdge } from './graph-diff.js';
 
 // ═══════════════════════════════════════════════════════════════

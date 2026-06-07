@@ -1,5 +1,5 @@
 // ─────────────────────────────────────────────────────────────────
-// @memograph/events — EventBus pub/sub system
+// @mutimemoagent/events — EventBus pub/sub system
 // ─────────────────────────────────────────────────────────────────
 
 export type EventHandler = (payload: unknown) => void | Promise<void>;

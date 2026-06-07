@@ -1,9 +1,9 @@
 // ─────────────────────────────────────────────────────────────────
-// @memograph/persist — SQLite Local Cache (better-sqlite3)
+// @mutimemoagent/persist — SQLite Local Cache (better-sqlite3)
 // ─────────────────────────────────────────────────────────────────
 
 import Database from 'better-sqlite3';
-import type { MemoryEntry, MemoryType, LifecycleStage } from '@memograph/core';
+import type { MemoryEntry, MemoryType, LifecycleStage } from '@mutimemoagent/core';
 
 // ─────────────────────────────────────────────────────────────────
 // Constants

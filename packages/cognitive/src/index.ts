@@ -1,4 +1,4 @@
-// ─── @memograph/cognitive — Barrel Exports ───────────────────────────────────
+// ─── @mutimemoagent/cognitive — Barrel Exports ───────────────────────────────────
 
 // Pipeline
 export { CognitivePipeline } from './pipeline/pipeline.js';

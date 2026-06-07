@@ -1,5 +1,5 @@
 ﻿{
-    "name":  "@memograph/ingest",
+    "name":  "@mutimemoagent/ingest",
     "version":  "0.1.0",
     "private":  true,
     "description":  "Memory ingestion pipeline 鈥?filter, classify, route, and extract",
@@ -23,9 +23,9 @@
                     "test":  "vitest run"
                 },
     "dependencies":  {
-                         "@memograph/core":  "workspace:*",
-                         "@memograph/memory":  "workspace:*",
-                         "@memograph/indexer":  "workspace:*"
+                         "@mutimemoagent/core":  "workspace:*",
+                         "@mutimemoagent/memory":  "workspace:*",
+                         "@mutimemoagent/indexer":  "workspace:*"
                      },
     "devDependencies":  {
                             "@types/node":  "^20.0.0",

@@ -1,5 +1,5 @@
 // ─────────────────────────────────────────────────────────────────
-// @memograph/events — GitListener
+// @mutimemoagent/events — GitListener
 // Install/uninstall git hooks that trigger memograph events.
 // ─────────────────────────────────────────────────────────────────
 

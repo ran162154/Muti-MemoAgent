@@ -1,5 +1,5 @@
 // ─────────────────────────────────────────────────────────────────
-// @memograph/events — FileListener
+// @mutimemoagent/events — FileListener
 // Watch project files with chokidar and emit 'file:changed' events.
 // ─────────────────────────────────────────────────────────────────
 

@@ -3,10 +3,10 @@
 // Runs domain analysis, knowledge extraction, and graph building.
 // ─────────────────────────────────────────────────────────────────
 
-import {MemoryStore} from '@memograph/memory';
-import {XiamiClient, LocalDB} from '@memograph/persist';
-import {loadConfig, getCacheDir} from '@memograph/sdk';
-import {createEmbedder, BaseLLMClient} from '@memograph/core';
+import {MemoryStore} from '@mutimemoagent/memory';
+import {XiamiClient, LocalDB} from '@mutimemoagent/persist';
+import {loadConfig, getCacheDir} from '@mutimemoagent/sdk';
+import {createEmbedder, BaseLLMClient} from '@mutimemoagent/core';
 import * as path from 'node:path';
 import chalk from 'chalk';
 import ora from 'ora';
@@ -58,7 +58,7 @@ export async function analyzeCommand(options: AnalyzeOptionsCLI): Promise<void> 
       platform_key: config.xiami.platform_key,
     });
     // SAFETY: XiamiClientImpl and LocalDBImpl need casting to match memory's interfaces
-    const memoryStore = new MemoryStore(xiamiClient as unknown as import('@memograph/memory').XiamiClient, db as unknown as import('@memograph/memory').LocalDB);
+    const memoryStore = new MemoryStore(xiamiClient as unknown as import('@mutimemoagent/memory').XiamiClient, db as unknown as import('@mutimemoagent/memory').LocalDB);
     const llmClient = new BaseLLMClient({
       provider: 'openai',
       apiKey: process.env.OPENAI_API_KEY || process.env.XIAMI_LLM_KEY || '',
@@ -68,7 +68,7 @@ export async function analyzeCommand(options: AnalyzeOptionsCLI): Promise<void> 
     const spinner = ora('Running cognitive analysis...').start();
 
     try {
-      const {CognitivePipeline} = await import('@memograph/cognitive');
+      const {CognitivePipeline} = await import('@mutimemoagent/cognitive');
       const cognitive = new CognitivePipeline();
 
       const pipelineOptions = {
@@ -140,7 +140,7 @@ async function basicSymbolAnalysis(projectDir: string): Promise<void> {
 
   try {
     // Use CodeIndexer if available
-    const {CodeIndexer} = await import('@memograph/indexer');
+    const {CodeIndexer} = await import('@mutimemoagent/indexer');
     const indexer = new CodeIndexer();
     const result = await indexer.index(projectDir);
     spinner.succeed('Symbol analysis complete');
@@ -159,6 +159,6 @@ async function basicSymbolAnalysis(projectDir: string): Promise<void> {
     }
   } catch {
     spinner.warn('No indexer available');
-    console.log(`  ${chalk.gray('Install @memograph/indexer for detailed symbol analysis.')}`);
+    console.log(`  ${chalk.gray('Install @mutimemoagent/indexer for detailed symbol analysis.')}`);
   }
 }

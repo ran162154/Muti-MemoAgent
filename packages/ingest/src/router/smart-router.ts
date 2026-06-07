@@ -1,4 +1,4 @@
-import {type EventSourceType, type RouteTarget} from '@memograph/core';
+import {type EventSourceType, type RouteTarget} from '@mutimemoagent/core';
 
 // ──────────────────────────────────────────────────────────────────
 // SmartRouter — 智能路由

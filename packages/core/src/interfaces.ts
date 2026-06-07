@@ -1,5 +1,5 @@
 // ─────────────────────────────────────────────────────────────────
-// @memograph/core — Interface Layer (abstract public API surface)
+// @mutimemoagent/core — Interface Layer (abstract public API surface)
 //
 // These interfaces decouple high-level orchestration from concrete
 // implementations, making it easy to swap backends, indexers, or

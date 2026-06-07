@@ -1,5 +1,5 @@
 // ─────────────────────────────────────────────────────────────────
-// @memograph/sdk — Public API
+// @mutimemoagent/sdk — Public API
 // ─────────────────────────────────────────────────────────────────
 
 export {MemographSDK} from './installer.js';
@@ -23,7 +23,7 @@ export {
   generateHookScript,
 } from './hooks/git-hooks.js';
 
-// ── Events (consolidated from @memograph/events) ───────────
+// ── Events (consolidated from @mutimemoagent/events) ───────────
 export { EventBus } from './events/bus.js';
 export type { EventHandler, EventName } from './events/bus.js';
 export { isValidEvent, getEventNames } from './events/bus.js';

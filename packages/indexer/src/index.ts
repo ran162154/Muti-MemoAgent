@@ -1,4 +1,4 @@
-// ─── @memograph/indexer ──────────────────────────────────────────────────
+// ─── @mutimemoagent/indexer ──────────────────────────────────────────────────
 // Code indexing engine — Tree-sitter AST parsing, symbol extraction, call graph,
 // framework recognition, cross-language bridging, file watching, and SQLite+FTS5 persistence.
 

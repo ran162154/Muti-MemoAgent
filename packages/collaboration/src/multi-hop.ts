@@ -1,10 +1,10 @@
 // ────────────────────────────────────────────────────────────────
-// @memograph/collaboration — Multi-Hop Reasoner
+// @mutimemoagent/collaboration — Multi-Hop Reasoner
 // Discovers transitive relations across agents via multi-hop path
 // reasoning, transitve closure, and inferred relation suggestions.
 // ────────────────────────────────────────────────────────────────
 
-import type { CrossAgentRelation, MemoryEntry } from '@memograph/core';
+import type { CrossAgentRelation, MemoryEntry } from '@mutimemoagent/core';
 import { CrossAgentGraph } from './cross-agent-graph.js';
 
 let inferredCounter = 0;

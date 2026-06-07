@@ -1,8 +1,8 @@
 // ─────────────────────────────────────────────────────────────────
-// @memograph/evolution — Agent 变异器
+// @mutimemoagent/evolution — Agent 变异器
 // ─────────────────────────────────────────────────────────────────
 
-import type { MemoryEntry } from '@memograph/core';
+import type { MemoryEntry } from '@mutimemoagent/core';
 
 // ═══════════════════════════════════════════════════════════════
 // AgentMutator

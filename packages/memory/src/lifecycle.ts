@@ -1,9 +1,9 @@
 // ─────────────────────────────────────────────────────────────────
-// @memograph/memory — LifecycleManager 生命周期管理器
+// @mutimemoagent/memory — LifecycleManager 生命周期管理器
 // ─────────────────────────────────────────────────────────────────
 
-import type { MemoryEntry, MemoryType, LifecycleStage } from '@memograph/core';
-import { MEMORY_TIER_MAP, type MemoryTier } from '@memograph/core';
+import type { MemoryEntry, MemoryType, LifecycleStage } from '@mutimemoagent/core';
+import { MEMORY_TIER_MAP, type MemoryTier } from '@mutimemoagent/core';
 
 // ═══════════════════════════════════════════════════════════════
 // 层级 → TTL 映射（毫秒）

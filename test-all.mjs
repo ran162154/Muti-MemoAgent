@@ -33,14 +33,14 @@ async function run() {
   console.log('  🧪 Muti-MemoAgent 功能测试');
   console.log('═══════════════════════════════════════════\n');
 
-  // ═══ @memograph/core ═══
-  console.log('📦 @memograph/core');
+  // ═══ @mutimemoagent/core ═══
+  console.log('📦 @mutimemoagent/core');
   test('checksum: 确定性哈希', () => { const h1=createHash('sha256').update('hello').digest('hex').slice(0,16); const h2=createHash('sha256').update('hello').digest('hex').slice(0,16); if (h1!==h2||h1.length!==16) throw new Error('broken'); });
   test('generateId: 无碰撞', () => { const ids=new Set(); for(let i=0;i<200;i++) ids.add(`${Date.now().toString(36)}-${Math.random().toString(36).slice(2,10)}`); if(ids.size!==200) throw new Error(`collision ${ids.size}`); });
   test('cosineSimilarity: 向量相似度', () => { const cos=(a,b)=>{let d=0,nA=0,nB=0;for(let i=0;i<a.length;i++){d+=a[i]*b[i];nA+=a[i]*a[i];nB+=b[i]*b[i];}return d/(Math.sqrt(nA)*Math.sqrt(nB));}; if(Math.abs(cos([1,2,3],[1,2,3])-1)>0.001) throw new Error('same!=1'); if(Math.abs(cos([1,0,0],[0,1,0]))>0.001) throw new Error('orth!=0'); });
 
-  // ═══ @memograph/indexer ═══
-  console.log('\n📦 @memograph/indexer');
+  // ═══ @mutimemoagent/indexer ═══
+  console.log('\n📦 @mutimemoagent/indexer');
   const idx = await import('./packages/indexer/dist/index.js');
 
   test('ExtractorRegistry: 语言检测', () => {
@@ -73,7 +73,7 @@ async function run() {
     console.log(`       → ${fws.map(f=>f.name).join(', ') || 'none'}`);
   });
 
-  // ═══ @memograph/indexer (better-sqlite3 variants) ═══
+  // ═══ @mutimemoagent/indexer (better-sqlite3 variants) ═══
   test('CodeIndexer: 索引流程', async () => {
     const indexer = new idx.CodeIndexer();
     const r = await indexer.index(TEST_DIR, {includePatterns:['**/*.ts','**/*.py'],excludePatterns:['node_modules/**','dist/**'],maxFileSize:1048576,languages:['TypeScript','Python']});
@@ -91,8 +91,8 @@ async function run() {
     console.log(`       → auth callers: ${callers.slice(0,3).map(s=>s.name).join(', ')}`);
   });
 
-  // ═══ @memograph/persist ═══
-  console.log('\n📦 @memograph/persist');
+  // ═══ @mutimemoagent/persist ═══
+  console.log('\n📦 @mutimemoagent/persist');
   const persist = await import('./packages/persist/dist/index.js');
 
   test('LocalDB: CRUD+搜索', () => {
@@ -107,8 +107,8 @@ async function run() {
     console.log(`       → ${s.count} entries, search hit: "${hits[0].content.slice(0,30)}..."`);
   });
 
-  // ═══ @memograph/memory ═══
-  console.log('\n📦 @memograph/memory');
+  // ═══ @mutimemoagent/memory ═══
+  console.log('\n📦 @mutimemoagent/memory');
   const mem = await import('./packages/memory/dist/index.js');
 
   test('createEntry: 完整条目', () => {
@@ -135,8 +135,8 @@ async function run() {
     console.log(`       → conflicts: ${cd.detectConflicts([a,b]).length}`);
   });
 
-  // ═══ @memograph/ingest ═══
-  console.log('\n📦 @memograph/ingest');
+  // ═══ @mutimemoagent/ingest ═══
+  console.log('\n📦 @mutimemoagent/ingest');
   const ingest = await import('./packages/ingest/dist/index.js');
 
   test('SignalFilter: 过滤', () => { const sf=new ingest.SignalFilter(); if(sf.filter('哈哈').pass||sf.filter('ok').pass) throw new Error('filter'); if(!sf.filter('用户偏好使用pnpm管理项目').pass) throw new Error('pass'); });
@@ -147,8 +147,8 @@ async function run() {
     if(!sr.route('import {Auth} from "./auth"','code').some(r=>r.agent_id==='project')) throw new Error('code→project');
   });
 
-  // ═══ @memograph/collaboration ═══
-  console.log('\n📦 @memograph/collaboration');
+  // ═══ @mutimemoagent/collaboration ═══
+  console.log('\n📦 @mutimemoagent/collaboration');
   const col = await import('./packages/collaboration/dist/index.js');
 
   test('CrossAgentGraph: 构建+查询', () => {
@@ -172,8 +172,8 @@ async function run() {
     console.log(`       → A→C w=${r[0].weight?.toFixed(2)}`);
   });
 
-  // ═══ @memograph/evolution ═══
-  console.log('\n📦 @memograph/evolution');
+  // ═══ @mutimemoagent/evolution ═══
+  console.log('\n📦 @mutimemoagent/evolution');
   const evo = await import('./packages/evolution/dist/index.js');
 
   test('FitnessEvaluator: 评分', () => {

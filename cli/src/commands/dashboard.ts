@@ -1,7 +1,7 @@
 import {execSync, spawn} from 'node:child_process';
 import * as fs from 'node:fs';
 import * as path from 'node:path';
-import {getConfigDir, getCacheDir, loadConfig} from '@memograph/sdk';
+import {getConfigDir, getCacheDir, loadConfig} from '@mutimemoagent/sdk';
 
 export interface DashboardOptionsCLI {
   port?: string;

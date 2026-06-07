@@ -1,32 +1,31 @@
-﻿{
-    "name":  "@memograph/mcp-server",
-    "version":  "0.1.0",
-    "private":  true,
-    "description":  "MCP Server for Multi-MemoAgent",
-    "type":  "module",
-    "main":  "./dist/index.js",
-    "bin":  {
-                "memograph-mcp":  "./dist/index.js"
-            },
-    "scripts":  {
-                    "build":  "tsc",
-                    "clean":  "rimraf dist"
-                },
-    "dependencies":  {
-                         "@memograph/core":  "workspace:*",
-                         "@memograph/memory":  "workspace:*",
-                         "@modelcontextprotocol/sdk":  "^1.0.0",
-                         "zod":  "^4.0.0"
-                     },
-    "devDependencies":  {
-                            "@types/node":  "^20.0.0",
-                            "typescript":  "^5.5.0",
-                            "rimraf":  "^5.0.0"
-                        },
-    "license":  "SEE LICENSE IN LICENSE",
-    "repository":  {
-                       "type":  "git",
-                       "url":  "https://github.com/ran162154/Muti-MemoAgent.git"
-                   },
-    "homepage":  "https://github.com/ran162154/Muti-MemoAgent#readme"
+{
+  "name": "@mutimemoagent/mcp-server",
+  "version": "0.1.0",
+  "private": true,
+  "description": "MCP Server for Muti-MemoAgent",
+  "type": "module",
+  "main": "./dist/index.js",
+  "bin": { "mutimemoagent-mcp": "./dist/index.js" },
+  "scripts": {
+    "build": "tsc",
+    "clean": "rimraf dist"
+  },
+  "dependencies": {
+    "@mutimemoagent/core": "workspace:*",
+    "@mutimemoagent/memory": "workspace:*",
+    "@mutimemoagent/persist": "workspace:*",
+    "@modelcontextprotocol/sdk": "^1.0.0",
+    "zod": "^4.0.0"
+  },
+  "devDependencies": {
+    "@types/node": "^20.0.0",
+    "typescript": "^5.5.0",
+    "rimraf": "^5.0.0"
+  },
+  "license": "SEE LICENSE IN LICENSE",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/YPing-A/Muti-MemoAgent.git"
+  },
+  "homepage": "https://github.com/YPing-A/Muti-MemoAgent#readme"
 }

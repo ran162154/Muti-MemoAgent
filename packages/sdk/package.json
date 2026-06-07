@@ -1,5 +1,5 @@
 ﻿{
-    "name":  "@memograph/sdk",
+    "name":  "@mutimemoagent/sdk",
     "version":  "0.1.0",
     "private":  true,
     "description":  "Memograph SDK 鈥?install, init, connect, and manage memory agents",
@@ -23,10 +23,10 @@
                     "test":  "vitest run"
                 },
     "dependencies":  {
-                         "@memograph/core":  "workspace:*",
-                         "@memograph/memory":  "workspace:*",
-                         "@memograph/persist":  "workspace:*",
-                         "@memograph/ingest":  "workspace:*"
+                         "@mutimemoagent/core":  "workspace:*",
+                         "@mutimemoagent/memory":  "workspace:*",
+                         "@mutimemoagent/persist":  "workspace:*",
+                         "@mutimemoagent/ingest":  "workspace:*"
                      },
     "devDependencies":  {
                             "typescript":  "^5.5.0",

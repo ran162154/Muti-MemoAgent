@@ -35,7 +35,7 @@ Muti-MemoAgent 给 AI Agent 装一个**会自己长大的记忆系统**。它自
 
 **做什么：** 自动捕获一切——git 提交、文件保存、对话内容。过滤噪音、去重、检测冲突，然后自动路由到正确的记忆体。
 
-**效果：** `memograph init` 之后什么都不用管。每次写代码或聊天，相关知识自动入库。
+**效果：** `mutimemoagent init` 之后什么都不用管。每次写代码或聊天，相关知识自动入库。
 
 **优势：** 不需要手动记笔记，系统自己判断什么重要。5 阶段管线确保只有有意义的内容被存储。
 
@@ -95,7 +95,7 @@ Muti-MemoAgent 给 AI Agent 装一个**会自己长大的记忆系统**。它自
 
 **做什么：** 7 个专业 AI Agent 分析代码结构、识别架构分层、提取业务领域、构建学习导览。
 
-**效果：** 新人执行 `memograph analyze` → 得到：架构分层图、按依赖排序的学习路径、代码到业务流程的映射。
+**效果：** 新人执行 `mutimemoagent analyze` → 得到：架构分层图、按依赖排序的学习路径、代码到业务流程的映射。
 
 **优势：** 三种受众模式——初级开发者看到带代码片段的解释，PM 看到高层次的业务流，高级开发者看到架构决策和取舍。
 
@@ -112,28 +112,28 @@ pnpm install
 # → 自动打开浏览器到 xiami.aiznrc.com/register
 # → 引导完成注册和密钥配置
 # → 然后执行：
-npx memograph init --xiami-key xiami_sk_xxx
+npx mutimemoagent init --xiami-key xiami_sk_xxx
 ```
 
 ### 给 AI Agent 用
 
 ```bash
-memograph onboard                              # 首次引导
-memograph init --xiami-key xiami_sk_xxx        # 初始化项目
-memograph index && memograph analyze            # 索引+分析
-memograph search "支付流程"                     # 搜索
+mutimemoagent onboard                              # 首次引导
+mutimemoagent init --xiami-key xiami_sk_xxx        # 初始化项目
+mutimemoagent index && mutimemoagent analyze            # 索引+分析
+mutimemoagent search "支付流程"                     # 搜索
 ```
 
 ### 给人用
 
 ```bash
-memograph init --xiami-key xiami_sk_xxx        # 一次配置
-memograph index                                 # 索引代码
-memograph analyze                               # 理解架构
-memograph search "认证模块"                      # 找到任何东西
-memograph memo "部署: docker → k8s"             # 保存记忆
-memograph watch                                 # 保存即同步
-memograph dashboard                             # 可视化图谱
+mutimemoagent init --xiami-key xiami_sk_xxx        # 一次配置
+mutimemoagent index                                 # 索引代码
+mutimemoagent analyze                               # 理解架构
+mutimemoagent search "认证模块"                      # 找到任何东西
+mutimemoagent memo "部署: docker → k8s"             # 保存记忆
+mutimemoagent watch                                 # 保存即同步
+mutimemoagent dashboard                             # 可视化图谱
 ```
 
 ### 全部命令

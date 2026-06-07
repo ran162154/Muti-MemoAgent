@@ -1,8 +1,8 @@
 // ─────────────────────────────────────────────────────────────────
-// @memograph/evolution — 代码图谱差异分析
+// @mutimemoagent/evolution — 代码图谱差异分析
 // ─────────────────────────────────────────────────────────────────
 
-import type { GraphDiff, StructuralChange } from '@memograph/core';
+import type { GraphDiff, StructuralChange } from '@mutimemoagent/core';
 
 // ═══════════════════════════════════════════════════════════════
 // Types

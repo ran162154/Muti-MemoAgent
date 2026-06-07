@@ -1,10 +1,10 @@
 // ────────────────────────────────────────────────────────────────
-// @memograph/collaboration — Wiki Builder
+// @mutimemoagent/collaboration — Wiki Builder
 // Generates a cross-referenceable markdown wiki from agent memory
 // entries, with wiki-links for shared entities.
 // ────────────────────────────────────────────────────────────────
 
-import type { MemoryEntry } from '@memograph/core';
+import type { MemoryEntry } from '@mutimemoagent/core';
 import * as fs from 'node:fs/promises';
 import * as path from 'node:path';
 

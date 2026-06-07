@@ -1,5 +1,5 @@
-import {MemographSDK} from '@memograph/sdk';
-import type {InitOptions} from '@memograph/core';
+import {MemographSDK} from '@mutimemoagent/sdk';
+import type {InitOptions} from '@mutimemoagent/core';
 
 export interface InitOptionsCLI {
   xiamiKey?: string;

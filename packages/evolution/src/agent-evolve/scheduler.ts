@@ -1,10 +1,10 @@
 // ─────────────────────────────────────────────────────────────────
-// @memograph/evolution — 进化调度器
+// @mutimemoagent/evolution — 进化调度器
 // ─────────────────────────────────────────────────────────────────
 
-import type { XiamiClient } from '@memograph/persist';
-import type { MemoryStore } from '@memograph/memory';
-import type { MemoryEntry } from '@memograph/core';
+import type { XiamiClient } from '@mutimemoagent/persist';
+import type { MemoryStore } from '@mutimemoagent/memory';
+import type { MemoryEntry } from '@mutimemoagent/core';
 import { FitnessEvaluator, type AgentStats } from '../evaluate.js';
 import { AgentMutator } from './mutator.js';
 import { AgentCompetition } from './competition.js';
@@ -319,7 +319,7 @@ export class EvolutionScheduler {
     for (const info of agentInfos) {
       try {
         // Gather entries and stats
-        const entries: import('@memograph/core').MemoryEntry[] = [];
+        const entries: import('@mutimemoagent/core').MemoryEntry[] = [];
         const stats: AgentStats = {
           entry_count: info.entry_count,
           queries_per_day: 0,
@@ -371,7 +371,7 @@ export class EvolutionScheduler {
   private async getAgentEntries(
     agentId: string,
     store: MemoryStore,
-  ): Promise<import('@memograph/core').MemoryEntry[]> {
+  ): Promise<import('@mutimemoagent/core').MemoryEntry[]> {
     try {
       // Attempt to read from local store
       // The MemoryStore.read method only reads by ID; we'd need
@@ -627,7 +627,7 @@ export class DreamConsolidator {
       id: `dream-${Date.now().toString(36)}-${Math.random().toString(36).slice(2, 8)}`,
       agent_id: agentId,
       content: mergedContent,
-      memory_type: dominantType as import('@memograph/core').MemoryType,
+      memory_type: dominantType as import('@mutimemoagent/core').MemoryType,
       structured_data: undefined,
       embeddings: undefined,
       lifecycle: {

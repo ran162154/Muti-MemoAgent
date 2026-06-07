@@ -1,5 +1,5 @@
 // CLI: memograph check — check Xiami quota and balance
-import {MemographSDK} from '@memograph/sdk';
+import {MemographSDK} from '@mutimemoagent/sdk';
 
 export async function checkCommand(opts: { entries?: string; agents?: string }): Promise<void> {
   const sdk = new MemographSDK();

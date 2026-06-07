@@ -26,25 +26,25 @@ importers:
 
   cli:
     dependencies:
-      '@memograph/cognitive':
+      '@mutimemoagent/cognitive':
         specifier: workspace:*
         version: link:../packages/cognitive
-      '@memograph/core':
+      '@mutimemoagent/core':
         specifier: workspace:*
         version: link:../packages/core
-      '@memograph/indexer':
+      '@mutimemoagent/indexer':
         specifier: workspace:*
         version: link:../packages/indexer
-      '@memograph/ingest':
+      '@mutimemoagent/ingest':
         specifier: workspace:*
         version: link:../packages/ingest
-      '@memograph/memory':
+      '@mutimemoagent/memory':
         specifier: workspace:*
         version: link:../packages/memory
-      '@memograph/persist':
+      '@mutimemoagent/persist':
         specifier: workspace:*
         version: link:../packages/persist
-      '@memograph/sdk':
+      '@mutimemoagent/sdk':
         specifier: workspace:*
         version: link:../packages/sdk
       chalk:
@@ -75,7 +75,7 @@ importers:
 
   dashboard:
     dependencies:
-      '@memograph/core':
+      '@mutimemoagent/core':
         specifier: workspace:*
         version: link:../packages/core
       react:
@@ -106,15 +106,18 @@ importers:
 
   mcp-server:
     dependencies:
-      '@memograph/core':
-        specifier: workspace:*
-        version: link:../packages/core
-      '@memograph/memory':
-        specifier: workspace:*
-        version: link:../packages/memory
       '@modelcontextprotocol/sdk':
         specifier: ^1.0.0
         version: 1.29.0(zod@4.4.3)
+      '@mutimemoagent/core':
+        specifier: workspace:*
+        version: link:../packages/core
+      '@mutimemoagent/memory':
+        specifier: workspace:*
+        version: link:../packages/memory
+      '@mutimemoagent/persist':
+        specifier: workspace:*
+        version: link:../packages/persist
       zod:
         specifier: ^4.0.0
         version: 4.4.3
@@ -131,13 +134,13 @@ importers:
 
   packages/cognitive:
     dependencies:
-      '@memograph/core':
+      '@mutimemoagent/core':
         specifier: workspace:*
         version: link:../core
-      '@memograph/indexer':
+      '@mutimemoagent/indexer':
         specifier: workspace:*
         version: link:../indexer
-      '@memograph/persist':
+      '@mutimemoagent/persist':
         specifier: workspace:*
         version: link:../persist
     devDependencies:
@@ -156,10 +159,10 @@ importers:
 
   packages/collaboration:
     dependencies:
-      '@memograph/core':
+      '@mutimemoagent/core':
         specifier: workspace:*
         version: link:../core
-      '@memograph/persist':
+      '@mutimemoagent/persist':
         specifier: workspace:*
         version: link:../persist
     devDependencies:
@@ -193,13 +196,13 @@ importers:
 
   packages/evolution:
     dependencies:
-      '@memograph/core':
+      '@mutimemoagent/core':
         specifier: workspace:*
         version: link:../core
-      '@memograph/memory':
+      '@mutimemoagent/memory':
         specifier: workspace:*
         version: link:../memory
-      '@memograph/persist':
+      '@mutimemoagent/persist':
         specifier: workspace:*
         version: link:../persist
     devDependencies:
@@ -218,7 +221,7 @@ importers:
 
   packages/indexer:
     dependencies:
-      '@memograph/core':
+      '@mutimemoagent/core':
         specifier: workspace:*
         version: link:../core
       better-sqlite3:
@@ -243,13 +246,13 @@ importers:
 
   packages/ingest:
     dependencies:
-      '@memograph/core':
+      '@mutimemoagent/core':
         specifier: workspace:*
         version: link:../core
-      '@memograph/indexer':
+      '@mutimemoagent/indexer':
         specifier: workspace:*
         version: link:../indexer
-      '@memograph/memory':
+      '@mutimemoagent/memory':
         specifier: workspace:*
         version: link:../memory
     devDependencies:
@@ -268,10 +271,10 @@ importers:
 
   packages/memory:
     dependencies:
-      '@memograph/core':
+      '@mutimemoagent/core':
         specifier: workspace:*
         version: link:../core
-      '@memograph/persist':
+      '@mutimemoagent/persist':
         specifier: workspace:*
         version: link:../persist
     devDependencies:
@@ -290,7 +293,7 @@ importers:
 
   packages/persist:
     dependencies:
-      '@memograph/core':
+      '@mutimemoagent/core':
         specifier: workspace:*
         version: link:../core
       better-sqlite3:
@@ -306,21 +309,18 @@ importers:
 
   packages/sdk:
     dependencies:
-      '@memograph/core':
+      '@mutimemoagent/core':
         specifier: workspace:*
         version: link:../core
-      '@memograph/ingest':
+      '@mutimemoagent/ingest':
         specifier: workspace:*
         version: link:../ingest
-      '@memograph/memory':
+      '@mutimemoagent/memory':
         specifier: workspace:*
         version: link:../memory
-      '@memograph/persist':
+      '@mutimemoagent/persist':
         specifier: workspace:*
         version: link:../persist
-      chokidar:
-        specifier: ^5.0.0
-        version: 5.0.0
     devDependencies:
       '@types/node':
         specifier: ^20.0.0
@@ -1081,10 +1081,6 @@ packages:
 
   check-error@1.0.3:
     resolution: {integrity: sha512-iKEoDYaRmd1mxM90a2OEfWhjsjPpYPuQ+lMYsoxB126+t8fw7ySEO48nmDg5COTjxDI65/Y2OWpeEHk3ZOe8zg==}
-
-  chokidar@5.0.0:
-    resolution: {integrity: sha512-TQMmc3w+5AxjpL8iIiwebF73dRDF4fBIieAqGn9RGCWaEVwQ6Fb2cGe31Yns0RRIzii5goJ1Y7xbMwo1TxMplw==}
-    engines: {node: '>= 20.19.0'}
 
   chownr@1.1.4:
     resolution: {integrity: sha512-jJ0bqzaylmJtVnNgzTeSOs8DPavpbYgEr/b0YL8/2GO3xJEhInFmhKMUnEJQjZumK7KXGFhUy89PrsJWlakBVg==}
@@ -1904,10 +1900,6 @@ packages:
   readable-stream@3.6.2:
     resolution: {integrity: sha512-9u/sniCrY3D5WdsERHzHE4G2YCXqoG5FTHUiCC4SIbr6XcLZBY05ya9EKjYek9O5xOAwjGq+1JdGBAS7Q9ScoA==}
     engines: {node: '>= 6'}
-
-  readdirp@5.0.0:
-    resolution: {integrity: sha512-9u/XQ1pvrQtYyMpZe7DXKv2p5CNvyVwzUB6uhLAnQwHMSgKMBR62lc7AHljaeteeHXn11XTAaLLUVZYVZyuRBQ==}
-    engines: {node: '>= 20.19.0'}
 
   require-from-string@2.0.2:
     resolution: {integrity: sha512-Xf0nWe6RseziFMu+Ap9biiUbmplq6S9/p+7w7YXP/JBHhrUDDUhwa+vANyubuqfZWTveU//DYVGsDG7RKL/vEw==}
@@ -3002,10 +2994,6 @@ snapshots:
     dependencies:
       get-func-name: 2.0.2
 
-  chokidar@5.0.0:
-    dependencies:
-      readdirp: 5.0.0
-
   chownr@1.1.4: {}
 
   cli-cursor@3.1.0:
@@ -3806,8 +3794,6 @@ snapshots:
       inherits: 2.0.4
       string_decoder: 1.3.0
       util-deprecate: 1.0.2
-
-  readdirp@5.0.0: {}
 
   require-from-string@2.0.2: {}
 

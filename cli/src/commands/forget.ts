@@ -1,6 +1,6 @@
-import {MemoryStore} from '@memograph/memory';
-import {XiamiClient, LocalDB} from '@memograph/persist';
-import {loadConfig, getCacheDir} from '@memograph/sdk';
+import {MemoryStore} from '@mutimemoagent/memory';
+import {XiamiClient, LocalDB} from '@mutimemoagent/persist';
+import {loadConfig, getCacheDir} from '@mutimemoagent/sdk';
 import * as path from 'node:path';
 
 export interface ForgetOptionsCLI {
@@ -42,7 +42,7 @@ export async function forgetCommand(
       platform_key: config.xiami.platform_key,
     });
     // SAFETY: XiamiClientImpl and LocalDBImpl need casting to match memory's interfaces
-    const memoryStore = new MemoryStore(xiamiClient as unknown as import('@memograph/memory').XiamiClient, db as unknown as import('@memograph/memory').LocalDB);
+    const memoryStore = new MemoryStore(xiamiClient as unknown as import('@mutimemoagent/memory').XiamiClient, db as unknown as import('@mutimemoagent/memory').LocalDB);
 
     // 确定要处理的 agents
     let agentsToProcess: string[];

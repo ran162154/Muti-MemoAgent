@@ -1,4 +1,4 @@
-import {type ClassifiedItem, type MemoryType, type LLMClient, generateId, now} from '@memograph/core';
+import {type ClassifiedItem, type MemoryType, type LLMClient, generateId, now} from '@mutimemoagent/core';
 
 // ──────────────────────────────────────────────────────────────────
 // ProfileExtractor — 个人档案提取器

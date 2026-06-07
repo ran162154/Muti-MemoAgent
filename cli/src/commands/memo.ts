@@ -1,8 +1,8 @@
-import {IngestPipeline} from '@memograph/ingest';
-import {MemoryStore} from '@memograph/memory';
-import {XiamiClient, LocalDB} from '@memograph/persist';
-import {loadConfig, getCacheDir} from '@memograph/sdk';
-import {createEmbedder, BaseLLMClient, generateId} from '@memograph/core';
+import {IngestPipeline} from '@mutimemoagent/ingest';
+import {MemoryStore} from '@mutimemoagent/memory';
+import {XiamiClient, LocalDB} from '@mutimemoagent/persist';
+import {loadConfig, getCacheDir} from '@mutimemoagent/sdk';
+import {createEmbedder, BaseLLMClient, generateId} from '@mutimemoagent/core';
 import * as path from 'node:path';
 
 export interface MemoOptionsCLI {
@@ -47,7 +47,7 @@ export async function memoCommand(
       platform_key: config.xiami.platform_key,
     });
     // SAFETY: XiamiClientImpl and LocalDBImpl need casting to match memory's interfaces
-    const memoryStore = new MemoryStore(xiamiClient as unknown as import('@memograph/memory').XiamiClient, db as unknown as import('@memograph/memory').LocalDB);
+    const memoryStore = new MemoryStore(xiamiClient as unknown as import('@mutimemoagent/memory').XiamiClient, db as unknown as import('@mutimemoagent/memory').LocalDB);
     const embedder = createEmbedder(256);
     const llmClient = new BaseLLMClient({
       provider: 'openai',

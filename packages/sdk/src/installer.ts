@@ -6,11 +6,11 @@ import {
   type XiamiAgentInfo,
   generateId,
   now,
-} from '@memograph/core';
-import {MemoryStore, type XiamiClient, type LocalDB} from '@memograph/memory';
-import {XiamiClient as XiamiClientImpl} from '@memograph/persist';
-import {LocalDB as LocalDBImpl} from '@memograph/persist';
-import {IngestPipeline} from '@memograph/ingest';
+} from '@mutimemoagent/core';
+import {MemoryStore, type XiamiClient, type LocalDB} from '@mutimemoagent/memory';
+import {XiamiClient as XiamiClientImpl} from '@mutimemoagent/persist';
+import {LocalDB as LocalDBImpl} from '@mutimemoagent/persist';
+import {IngestPipeline} from '@mutimemoagent/ingest';
 import * as fs from 'node:fs';
 import * as path from 'node:path';
 import * as os from 'node:os';
@@ -252,7 +252,7 @@ export class MemographSDK {
           const stats = fs.statSync(dbPath);
           localIndex.size_bytes = stats.size;
           // 使用 sqlite 查询条目数 — use dynamic import with type assertion
-          const {LocalDB: SQLiteDB} = await import('@memograph/persist');
+          const {LocalDB: SQLiteDB} = await import('@mutimemoagent/persist');
           const db = new SQLiteDB() as unknown as { initialize(p: string): void; getStats(): { count: number } };
           db.initialize(dbPath);
           const result = db.getStats();
@@ -410,7 +410,7 @@ export class MemographSDK {
     // persist's LocalDB uses initialize(dbPath) + insert/getById/deleteById/search/getStats
     // memory's LocalDB interface expects upsert/get/getAllByAgent/delete/ftsSearch/vectorSearch/count
     // SAFETY: persist's LocalDB APIs have not been aligned with memory's LocalDB interface
-    const {LocalDB: SQLiteDB} = await import('@memograph/persist');
+    const {LocalDB: SQLiteDB} = await import('@mutimemoagent/persist');
     const db = new SQLiteDB() as unknown as LocalDB;
     db.initialize!(dbPath);
     return db;

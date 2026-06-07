@@ -1,8 +1,8 @@
 // ─────────────────────────────────────────────────────────────────
-// @memograph/memory — ImportanceScorer: Auto importance scoring
+// @mutimemoagent/memory — ImportanceScorer: Auto importance scoring
 // ─────────────────────────────────────────────────────────────────
 
-import type { MemoryEntry } from '@memograph/core';
+import type { MemoryEntry } from '@mutimemoagent/core';
 
 /**
  * Auto-score a memory entry's importance based on:

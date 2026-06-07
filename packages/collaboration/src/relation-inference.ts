@@ -1,10 +1,10 @@
 // ────────────────────────────────────────────────────────────────
-// @memograph/collaboration — Relation Inference
+// @mutimemoagent/collaboration — Relation Inference
 // Rule-based inference engine that discovers cross-agent relations
 // by comparing entity sets and memory entries between agents.
 // ────────────────────────────────────────────────────────────────
 
-import type { CrossAgentRelation, Entity, MemoryEntry } from '@memograph/core';
+import type { CrossAgentRelation, Entity, MemoryEntry } from '@mutimemoagent/core';
 import { CrossAgentGraph } from './cross-agent-graph.js';
 
 let relationCounter = 0;
@@ -70,7 +70,7 @@ export class RelationInference {
 
     // ── Rule 2: PREFERENCE → TOOL match ───────────────
     // SAFETY: Entity.type is a string union that may include 'PREFERENCE' as a normalized form
-    const prefA = groupedA.get('PREFERENCE' as import('@memograph/core').EntityType) ?? [];
+    const prefA = groupedA.get('PREFERENCE' as import('@mutimemoagent/core').EntityType) ?? [];
     const prefEntitiesA = entitiesA.filter((e) => e.type === 'PROCESS'); // preferences are stored as PROCESS-ish
     const toolsB = groupedB.get('TOOL') ?? [];
     for (const pref of prefEntitiesA) {

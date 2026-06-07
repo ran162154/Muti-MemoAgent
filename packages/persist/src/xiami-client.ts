@@ -1,5 +1,5 @@
 // ─────────────────────────────────────────────────────────────────
-// @memograph/persist — Xiami REST API Client
+// @mutimemoagent/persist — Xiami REST API Client
 // ─────────────────────────────────────────────────────────────────
 
 import type {
@@ -9,7 +9,7 @@ import type {
   XiamiAgentInfo,
   SearchResult,
   MemoryType,
-} from '@memograph/core';
+} from '@mutimemoagent/core';
 
 // ─────────────────────────────────────────────────────────────────
 // Types
@@ -121,7 +121,7 @@ export class XiamiClient {
     const headers: Record<string, string> = {
       'Content-Type': 'application/json',
       'Authorization': 'Bearer ' + this.platformKey,
-      'User-Agent': '@memograph/persist/0.1.0',
+      'User-Agent': '@mutimemoagent/persist/0.1.0',
     };
 
     const res = await fetch(url, {

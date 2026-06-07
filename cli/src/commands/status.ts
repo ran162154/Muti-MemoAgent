@@ -1,4 +1,4 @@
-import {MemographSDK, loadConfig} from '@memograph/sdk';
+import {MemographSDK, loadConfig} from '@mutimemoagent/sdk';
 
 /**
  * `memograph status` — 显示状态

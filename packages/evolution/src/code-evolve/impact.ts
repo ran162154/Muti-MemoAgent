@@ -1,8 +1,8 @@
 // ─────────────────────────────────────────────────────────────────
-// @memograph/evolution — 变更影响传播分析
+// @mutimemoagent/evolution — 变更影响传播分析
 // ─────────────────────────────────────────────────────────────────
 
-import type { ImpactReport, ImpactItem } from '@memograph/core';
+import type { ImpactReport, ImpactItem } from '@mutimemoagent/core';
 import type { CodeGraph, CodeGraphNode } from './graph-diff.js';
 
 // ═══════════════════════════════════════════════════════════════

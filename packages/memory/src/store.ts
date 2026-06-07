@@ -1,5 +1,5 @@
 // ─────────────────────────────────────────────────────────────────
-// @memograph/memory — MemoryStore 存储引擎
+// @mutimemoagent/memory — MemoryStore 存储引擎
 // ─────────────────────────────────────────────────────────────────
 
 import type {
@@ -10,8 +10,8 @@ import type {
   XiamiSearchInput,
   IStorageBackend,
   ILocalDB,
-} from '@memograph/core';
-import { chunkArray } from '@memograph/core';
+} from '@mutimemoagent/core';
+import { chunkArray } from '@mutimemoagent/core';
 import { createEntry, updateEntry } from './entry.js';
 
 // ═══════════════════════════════════════════════════════════════
@@ -68,7 +68,7 @@ export class MemoryStore {
       updated.metadata.tags.push('xiami_synced');
       this.db.insert(updated);
       return { entry: updated, cloud_synced: true };
-    } catch (err) {
+    } catch (err: any) {
       console.error(`[MemoryStore] Xiami write failed: ${err.message}`);
       // Still write to local, but mark as sync-pending
       entry.metadata.tags.push('sync-pending');
@@ -193,3 +193,7 @@ export class MemoryStore {
     return;
   }
 }
+
+// Re-export XiamiClient and LocalDB types for backward compatibility
+export type XiamiClient = IStorageBackend;
+export type LocalDB = ILocalDB;

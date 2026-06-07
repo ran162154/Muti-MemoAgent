@@ -1,5 +1,5 @@
 // ─────────────────────────────────────────────────────────────────
-// @memograph/sdk — Events (migrated from @memograph/events)
+// @mutimemoagent/sdk — Events (migrated from @mutimemoagent/events)
 // ─────────────────────────────────────────────────────────────────
 
 export { EventBus } from './bus.js';

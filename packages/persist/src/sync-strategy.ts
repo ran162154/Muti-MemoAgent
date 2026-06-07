@@ -1,8 +1,8 @@
 // ─────────────────────────────────────────────────────────────────
-// @memograph/persist — Sync Strategies
+// @mutimemoagent/persist — Sync Strategies
 // ─────────────────────────────────────────────────────────────────
 
-import type { MemoryEntry, XiamiWriteInput } from '@memograph/core';
+import type { MemoryEntry, XiamiWriteInput } from '@mutimemoagent/core';
 import { XiamiClient } from './xiami-client.js';
 import { LocalDB } from './local-db.js';
 

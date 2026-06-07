@@ -1,8 +1,8 @@
 // ─────────────────────────────────────────────────────────────────
-// @memograph/mcp-server — Tool Definitions
+// @mutimemoagent/mcp-server — Tool Definitions
 // ─────────────────────────────────────────────────────────────────
 
-import type { MemoryEntry, SearchResult } from '@memograph/core';
+import type { MemoryEntry, SearchResult } from '@mutimemoagent/core';
 
 // ═══════════════════════════════════════════════════════════════
 // Base tool shape

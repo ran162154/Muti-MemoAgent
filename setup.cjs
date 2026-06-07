@@ -37,7 +37,7 @@ console.log('==================================================\n');
 console.log('First-time setup:\n');
 console.log('  1. Register on Xiami cloud (free)');
 console.log('  2. Create an API platform key');
-console.log('  3. Run: memograph init --xiami-key YOUR_KEY\n');
+console.log('  3. Run: mutimemoagent init --xiami-key YOUR_KEY\n');
 
 const XIAMI_BASE = 'https://xiami.aiznrc.com';
 console.log('  Opening Xiami registration page...');
@@ -47,7 +47,7 @@ openBrowser(XIAMI_BASE + '/api-keys');
 
 console.log('--------------------------------------------------');
 console.log('  After registering:');
-console.log('    npx memograph init --xiami-key xiami_sk_xxx');
+console.log('    npx mutimemoagent init --xiami-key xiami_sk_xxx');
 console.log('');
 console.log('  Auto-creates:');
 console.log('    - profile agent (user preferences/habits)');

@@ -1,4 +1,4 @@
-import {type ClassifiedItem, type MemoryType, type LLMClient, generateId, now} from '@memograph/core';
+import {type ClassifiedItem, type MemoryType, type LLMClient, generateId, now} from '@mutimemoagent/core';
 
 // ──────────────────────────────────────────────────────────────────
 // CodeExtractor — 代码内容提取器

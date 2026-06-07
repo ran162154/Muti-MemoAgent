@@ -1,4 +1,4 @@
-# @memograph/mcp-server
+# @mutimemoagent/mcp-server
 
 MCP (Model Context Protocol) server for Multi-MemoAgent. Exposes Memograph's memory tools to any MCP-compatible client (Claude Desktop, VS Code extensions, Cursor, OpenClaw, etc.).
 
@@ -18,13 +18,13 @@ MCP (Model Context Protocol) server for Multi-MemoAgent. Exposes Memograph's mem
 ### Direct invocation
 
 ```bash
-npx @memograph/mcp-server
+npx @mutimemoagent/mcp-server
 ```
 
 ### With auto-init
 
 ```bash
-AUTO_INIT=1 npx @memograph/mcp-server
+AUTO_INIT=1 npx @mutimemoagent/mcp-server
 ```
 
 ## MCP Client Registration
@@ -39,7 +39,7 @@ tools:
     memograph:
       command: npx
       args:
-        - "@memograph/mcp-server"
+        - "@mutimemoagent/mcp-server"
 ```
 
 ### Claude Desktop
@@ -51,7 +51,7 @@ Add to your `claude_desktop_config.json`:
   "mcpServers": {
     "memograph": {
       "command": "npx",
-      "args": ["@memograph/mcp-server"]
+      "args": ["@mutimemoagent/mcp-server"]
     }
   }
 }
@@ -64,7 +64,7 @@ In Cursor settings → Features → MCP Servers:
 ```
 Name: memograph
 Type: command
-Command: npx @memograph/mcp-server
+Command: npx @mutimemoagent/mcp-server
 ```
 
 ### VS Code (w/ MCP extension)
@@ -74,7 +74,7 @@ Command: npx @memograph/mcp-server
   "mcp.servers": {
     "memograph": {
       "command": "npx",
-      "args": ["@memograph/mcp-server"]
+      "args": ["@mutimemoagent/mcp-server"]
     }
   }
 }

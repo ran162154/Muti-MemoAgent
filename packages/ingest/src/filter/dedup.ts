@@ -1,5 +1,5 @@
-import {type MemoryEntry, cosineSimilarity} from '@memograph/core';
-import type {Embedder} from '@memograph/core';
+import {type MemoryEntry, cosineSimilarity} from '@mutimemoagent/core';
+import type {Embedder} from '@mutimemoagent/core';
 
 // ──────────────────────────────────────────────────────────────────
 // DedupDetector — 去重检测

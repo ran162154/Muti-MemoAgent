@@ -1,8 +1,8 @@
 // ─────────────────────────────────────────────────────────────────
-// @memograph/evolution — 代码变更趋势分析
+// @mutimemoagent/evolution — 代码变更趋势分析
 // ─────────────────────────────────────────────────────────────────
 
-import type { TrendReport } from '@memograph/core';
+import type { TrendReport } from '@mutimemoagent/core';
 
 // ═══════════════════════════════════════════════════════════════
 // TrendAnalyzer

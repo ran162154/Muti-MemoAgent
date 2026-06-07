@@ -39,27 +39,27 @@ Muti-MemoAgent is a **self-evolving memory system** for AI agents. Install it on
 git clone https://github.com/ping/Muti-MemoAgent.git
 cd Muti-MemoAgent && pnpm install
 # → Browser opens → Register on Xiami → Get API key
-npx memograph init --xiami-key xiami_sk_xxx
+npx mutimemoagent init --xiami-key xiami_sk_xxx
 ```
 
 ### Daily Use
 
 ```bash
-memograph onboard                              # First-time setup wizard
-memograph init --xiami-key xiami_sk_xxx        # Initialize project
-memograph index && memograph analyze            # Index + understand code
-memograph search "payment flow"                 # Search memories
-memograph memo "deploy: docker → k8s"           # Save a memory
-memograph watch                                 # Auto-sync on save
-memograph dashboard                             # Visual graph
+mutimemoagent onboard                              # First-time setup wizard
+mutimemoagent init --xiami-key xiami_sk_xxx        # Initialize project
+mutimemoagent index && mutimemoagent analyze            # Index + understand code
+mutimemoagent search "payment flow"                 # Search memories
+mutimemoagent memo "deploy: docker → k8s"           # Save a memory
+mutimemoagent watch                                 # Auto-sync on save
+mutimemoagent dashboard                             # Visual graph
 ```
 
 ### For AI Agents
 
 ```bash
-memograph onboard
-memograph search "authentication implementation"
-memograph memo "user prefers pnpm over npm" --type preference
+mutimemoagent onboard
+mutimemoagent search "authentication implementation"
+mutimemoagent memo "user prefers pnpm over npm" --type preference
 ```
 
 ---

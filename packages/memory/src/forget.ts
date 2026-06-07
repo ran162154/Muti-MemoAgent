@@ -1,9 +1,9 @@
 // ─────────────────────────────────────────────────────────────────
-// @memograph/memory — ForgettingEngine 遗忘引擎
+// @mutimemoagent/memory — ForgettingEngine 遗忘引擎
 // ─────────────────────────────────────────────────────────────────
 
-import type { MemoryEntry, ForgettingAction, MemoryType } from '@memograph/core';
-import { MEMORY_TIER_MAP } from '@memograph/core';
+import type { MemoryEntry, ForgettingAction, MemoryType } from '@mutimemoagent/core';
+import { MEMORY_TIER_MAP } from '@mutimemoagent/core';
 import type { XiamiClient, LocalDB } from './store.js';
 import { LifecycleManager } from './lifecycle.js';
 

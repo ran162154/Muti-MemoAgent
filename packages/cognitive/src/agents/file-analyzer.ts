@@ -7,7 +7,7 @@ import { KnowledgeGraph as KG } from '../pipeline/types.js';
 import { languageRegistry } from '../languages/registry.js';
 import { FileInfo } from './project-scanner.js';
 
-// We import CodeIndexer type from @memograph/indexer
+// We import CodeIndexer type from @mutimemoagent/indexer
 // Since we don't have the real type, we define an interface
 
 export interface CodeIndexer {

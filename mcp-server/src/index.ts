@@ -1,6 +1,6 @@
 #!/usr/bin/env node
 // ─────────────────────────────────────────────────────────────────
-// @memograph/mcp-server — MCP Server Entrypoint
+// @mutimemoagent/mcp-server — MCP Server Entrypoint
 // ─────────────────────────────────────────────────────────────────
 //
 // This MCP server exposes Memograph tools to any MCP-compatible
@@ -44,7 +44,7 @@ import type {
 // ═══════════════════════════════════════════════════════════════
 
 const SERVER_INFO = {
-  name: '@memograph/mcp-server',
+  name: '@mutimemoagent/mcp-server',
   version: '0.1.0',
 };
 
@@ -347,10 +347,53 @@ async function main(): Promise<void> {
       `[${SERVER_INFO.name}] MCP server connected via stdio transport`,
     );
 
-    // If AUTO_INIT is set, attempt to initialize with environment config
+    // If AUTO_INIT is set, attempt to initialize from environment or config file
     if (process.env.AUTO_INIT === '1') {
-      console.error('[memograph-mcp] AUTO_INIT enabled — wiring not yet auto-initialized');
-      console.error('[memograph-mcp] Call setWiring() with your backends or use manual init.');
+      console.error('[mutimemoagent-mcp] AUTO_INIT enabled — auto-wiring from config...');
+      try {
+        // Try to load local config and wire up real backends
+        const { existsSync, readFileSync } = await import('node:fs');
+        const { homedir } = await import('node:os');
+        const { join } = await import('node:path');
+        
+        const configPath = join(homedir(), '.memograph', 'config.json');
+        if (existsSync(configPath)) {
+          const config = JSON.parse(readFileSync(configPath, 'utf-8'));
+          const key = config?.xiami?.platform_key || process.env.XIAMI_PLATFORM_KEY;
+          const base = config?.xiami?.api_base || process.env.XIAMI_API_BASE || 'https://xiami.aiznrc.com';
+          
+          if (key) {
+            // Lazy-import Xiami client and set up real wiring
+            const { XiamiClient } = await import('@mutimemoagent/persist');
+            const client = new XiamiClient({ api_base: base, platform_key: key });
+            
+            setWiring({
+              searchMemory: (async (input: any) => {
+                const results = await client.search({ query: input.query, agent_id: input.agent_id, limit: input.max_results, threshold: input.threshold });
+                return { results, total: results.length };
+              }) as any,
+              writeMemory: (async (input: any) => {
+                const result = await client.write({ agent_id: input.agent_id, content: input.content, memory_type: input.memory_type, metadata: { tags: input.tags, confidence: input.confidence } });
+                return { id: result.id, status: 'written' };
+              }) as any,
+              searchSymbol: (async (_input: any) => ({ symbols: [], total: 0 })) as any,
+              analyzeImpact: (async (input: any) => ({ symbol: input.symbol, direct_impact: [], indirect_impact: [], test_impact: [], risk_score: 0 })) as any,
+              crossAgentSearch: (async (input: any) => {
+                const results = await client.searchCrossAgent(input.query);
+                return { results, total_agents_queried: 0 };
+              }) as any,
+              getEvolutionReport: (async (_input: any) => ({ agents: [], last_evolution_run: Date.now(), next_scheduled_run: Date.now() + 86400000 })) as any,
+            });
+            console.error('[mutimemoagent-mcp] ✅ Auto-wired with Xiami client');
+          } else {
+            console.error('[mutimemoagent-mcp] ⚠️  No Xiami key found — MCP tools will return empty results');
+          }
+        } else {
+          console.error('[mutimemoagent-mcp] ⚠️  No config found at ~/.memograph/config.json — run mutimemoagent init first');
+        }
+      } catch (err) {
+        console.error('[mutimemoagent-mcp] ⚠️  Auto-init failed:', err instanceof Error ? err.message : String(err));
+      }
     }
   } catch (err) {
     console.error(

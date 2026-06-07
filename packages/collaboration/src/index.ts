@@ -1,5 +1,5 @@
 // ────────────────────────────────────────────────────────────────
-// @memograph/collaboration — Public API
+// @mutimemoagent/collaboration — Public API
 // ────────────────────────────────────────────────────────────────
 
 export { CrossAgentGraph } from './cross-agent-graph.js';

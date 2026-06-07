@@ -1,5 +1,5 @@
 // ─────────────────────────────────────────────────────────────────
-// @memograph/events — CronListener
+// @mutimemoagent/events — CronListener
 // Simple interval-based scheduler for periodic tasks.
 // ─────────────────────────────────────────────────────────────────
 

@@ -1,5 +1,5 @@
 ﻿{
-    "name":  "@memograph/evolution",
+    "name":  "@mutimemoagent/evolution",
     "version":  "0.1.0",
     "private":  true,
     "description":  "Self-evolution engine for Multi-MemoAgent",
@@ -18,9 +18,9 @@
                     "test":  "vitest run"
                 },
     "dependencies":  {
-                         "@memograph/core":  "workspace:*",
-                         "@memograph/persist":  "workspace:*",
-                         "@memograph/memory":  "workspace:*"
+                         "@mutimemoagent/core":  "workspace:*",
+                         "@mutimemoagent/persist":  "workspace:*",
+                         "@mutimemoagent/memory":  "workspace:*"
                      },
     "devDependencies":  {
                             "@types/node":  "^20.0.0",

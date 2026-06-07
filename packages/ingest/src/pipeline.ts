@@ -11,10 +11,10 @@ import {
   type LLMClient,
   generateId,
   now,
-} from '@memograph/core';
-import type {MemoryStore} from '@memograph/memory';
-import {CodeIndexer} from '@memograph/indexer';
-import type {MemoryEntry as IndexerMemoryEntry} from '@memograph/indexer';
+} from '@mutimemoagent/core';
+import type {MemoryStore} from '@mutimemoagent/memory';
+import {CodeIndexer} from '@mutimemoagent/indexer';
+import type {MemoryEntry as IndexerMemoryEntry} from '@mutimemoagent/indexer';
 
 import {SignalFilter} from './filter/signal-filter.js';
 import {DedupDetector} from './filter/dedup.js';
@@ -114,9 +114,9 @@ export class IngestPipeline {
 
       for (const item of classifiedItems) {
         try {
-          const entry = await this.config.memoryStore.write(item);
-          result.written.push(entry.id);
-          result.indexed.push(entry.id);
+          const result_entry = await this.config.memoryStore.write(item);
+          result.written.push(result_entry.entry.id);
+          result.indexed.push(result_entry.entry.id);
         } catch (err) {
           result.failed.push({
             item,

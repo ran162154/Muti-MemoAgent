@@ -1,11 +1,11 @@
 // ────────────────────────────────────────────────────────────────
-// @memograph/collaboration — Discovery Engine
+// @mutimemoagent/collaboration — Discovery Engine
 // Main orchestrator for cross-agent discovery. Coordinates NER,
 // relation inference, multi-hop reasoning, and Xiami persistence.
 // ────────────────────────────────────────────────────────────────
 
-import type { CrossAgentRelation, Entity, MemoryEntry, SearchResult } from '@memograph/core';
-import { XiamiClient } from '@memograph/persist';
+import type { CrossAgentRelation, Entity, MemoryEntry, SearchResult } from '@mutimemoagent/core';
+import { XiamiClient } from '@mutimemoagent/persist';
 import { CrossAgentGraph } from './cross-agent-graph.js';
 import { NamedEntityRecognizer } from './ner.js';
 import { RelationInference } from './relation-inference.js';

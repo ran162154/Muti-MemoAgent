@@ -1,5 +1,5 @@
 // ─────────────────────────────────────────────────────────────────
-// @memograph/sdk/events — PipelineOrchestrator
+// @mutimemoagent/sdk/events — PipelineOrchestrator
 // Lazy-loads heavy packages only when needed
 // ─────────────────────────────────────────────────────────────────
 
@@ -16,7 +16,7 @@ export class PipelineOrchestrator {
     console.log(`[Orchestrator] Files changed: ${files.length} files`);
     // Lazy-load indexer when actually needed via dynamic import
     try {
-      const idx = await import(String('@memograph/indexer'));
+      const idx = await import(String('@mutimemoagent/indexer'));
       const indexer = new idx.CodeIndexer();
       await indexer.index(process.cwd(), {
         includePatterns: ['**/*.ts', '**/*.py', '**/*.js'],

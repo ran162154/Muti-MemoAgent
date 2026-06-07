@@ -1,12 +1,12 @@
 // ─────────────────────────────────────────────────────────────────
-// @memograph/evolution — 适应度评估
+// @mutimemoagent/evolution — 适应度评估
 // ─────────────────────────────────────────────────────────────────
 
 import type {
   MemoryEntry,
   AgentFitnessReport,
   DimensionScore,
-} from '@memograph/core';
+} from '@mutimemoagent/core';
 
 // ═══════════════════════════════════════════════════════════════
 // AgentStats

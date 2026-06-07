@@ -1,8 +1,8 @@
 // ─────────────────────────────────────────────────────────────────
-// @memograph/evolution — Agent 竞争评估
+// @mutimemoagent/evolution — Agent 竞争评估
 // ─────────────────────────────────────────────────────────────────
 
-import type { SearchResult } from '@memograph/core';
+import type { SearchResult } from '@mutimemoagent/core';
 
 // ═══════════════════════════════════════════════════════════════
 // Types

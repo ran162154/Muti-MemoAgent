@@ -1,7 +1,7 @@
 #!/usr/bin/env node
 
 // ═══════════════════════════════════════════════════════════════
-// @memograph/cli — CLI 入口
+// @mutimemoagent/cli — CLI 入口
 // ═══════════════════════════════════════════════════════════════
 
 import {Command} from 'commander';

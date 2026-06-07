@@ -1,7 +1,7 @@
-import {MemoryStore} from '@memograph/memory';
-import {XiamiClient, LocalDB} from '@memograph/persist';
-import {loadConfig, getCacheDir} from '@memograph/sdk';
-import type {SearchQuery, SearchResult} from '@memograph/core';
+import {MemoryStore} from '@mutimemoagent/memory';
+import {XiamiClient, LocalDB} from '@mutimemoagent/persist';
+import {loadConfig, getCacheDir} from '@mutimemoagent/sdk';
+import type {SearchQuery, SearchResult} from '@mutimemoagent/core';
 import * as path from 'node:path';
 
 export interface SearchOptionsCLI {

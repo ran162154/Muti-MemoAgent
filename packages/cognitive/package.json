@@ -1,5 +1,5 @@
 ﻿{
-    "name":  "@memograph/cognitive",
+    "name":  "@mutimemoagent/cognitive",
     "version":  "0.1.0",
     "private":  true,
     "description":  "Cognitive analysis pipeline 鈥?multi-agent code understanding",
@@ -18,9 +18,9 @@
                     "test":  "vitest run"
                 },
     "dependencies":  {
-                         "@memograph/core":  "workspace:*",
-                         "@memograph/indexer":  "workspace:*",
-                         "@memograph/persist":  "workspace:*"
+                         "@mutimemoagent/core":  "workspace:*",
+                         "@mutimemoagent/indexer":  "workspace:*",
+                         "@mutimemoagent/persist":  "workspace:*"
                      },
     "devDependencies":  {
                             "@types/node":  "^20.0.0",
