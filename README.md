@@ -36,7 +36,7 @@ Muti-MemoAgent is a **self-evolving memory system** for AI agents. Install it on
 ### One Command
 
 ```bash
-git clone https://github.com/ran162154/Muti-MemoAgent.git
+git clone https://github.com/ping/Muti-MemoAgent.git
 cd Muti-MemoAgent && pnpm install
 # → Browser opens → Register on Xiami → Get API key
 npx memograph init --xiami-key xiami_sk_xxx

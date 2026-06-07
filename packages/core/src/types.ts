@@ -182,9 +182,11 @@ export interface CrossAgentRelation {
   discovery_method: 'ner' | 'llm_inference' | 'multi_hop' | 'rule';
 }
 
+export type EntityType = 'PERSON' | 'TOOL' | 'TECHNOLOGY' | 'PROJECT' | 'CONCEPT' | 'PROCESS' | 'DECISION';
+
 export interface Entity {
   name: string;
-  type: 'PERSON' | 'TOOL' | 'TECHNOLOGY' | 'PROJECT' | 'CONCEPT' | 'PROCESS' | 'DECISION';
+  type: EntityType;
   agent_id: string;
   occurrences: number;
 }

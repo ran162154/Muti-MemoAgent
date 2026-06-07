@@ -106,7 +106,7 @@ Muti-MemoAgent 给 AI Agent 装一个**会自己长大的记忆系统**。它自
 ### 一键引导（推荐）
 
 ```bash
-git clone https://github.com/ran162154/Muti-MemoAgent.git
+git clone https://github.com/ping/Muti-MemoAgent.git
 cd Muti-MemoAgent
 pnpm install
 # → 自动打开浏览器到 xiami.aiznrc.com/register

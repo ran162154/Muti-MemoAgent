@@ -7,11 +7,11 @@
   "author": "Muti-MemoAgent Contributors",
   "repository": {
     "type": "git",
-    "url": "https://github.com/ran162154/Muti-MemoAgent.git"
+    "url": "https://github.com/ping/Muti-MemoAgent.git"
   },
-  "homepage": "https://github.com/ran162154/Muti-MemoAgent#readme",
+  "homepage": "https://github.com/ping/Muti-MemoAgent#readme",
   "bugs": {
-    "url": "https://github.com/ran162154/Muti-MemoAgent/issues"
+    "url": "https://github.com/ping/Muti-MemoAgent/issues"
   },
   "scripts": {
     "postinstall": "node setup.cjs",
