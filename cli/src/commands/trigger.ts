@@ -55,8 +55,7 @@ export async function triggerCommand(event: string): Promise<void> {
   console.log('');
 
   try {
-    const eventBus = new EventBus();
-    const orchestrator = new PipelineOrchestrator(eventBus, process.cwd());
+    const orchestrator = new PipelineOrchestrator();
 
     console.log(`  ${chalk.cyan('🔄')} Processing...`);
 

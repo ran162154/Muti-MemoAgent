@@ -38,11 +38,9 @@ export async function watchCommand(options: WatchOptionsCLI): Promise<void> {
     console.log(`  ${chalk.cyan('🗂️')}  Cache:       ${cacheDir}`);
     console.log('');
 
-    // Setup event bus
-    const eventBus = new EventBus();
-
     // Setup orchestrator
-    const orchestrator = new PipelineOrchestrator(eventBus, cwd);
+    const orchestrator = new PipelineOrchestrator();
+    const eventBus = orchestrator.getEventBus();
 
     // Connect file:changed events to orchestrator
     eventBus.on('file:changed', async (payload) => {
